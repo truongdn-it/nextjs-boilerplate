@@ -2,6 +2,7 @@
   "extends": ["next/core-web-vitals", "next", "prettier"],
   "rules": {
     "no-console": "error",
-    "no-unused-vars": "error"
+    "no-unused-vars": "error",
+    "@next/next/no-document-import-in-page": "off"
   }
 }

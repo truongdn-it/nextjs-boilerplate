@@ -1,6 +1,6 @@
 {
   "name": "next-core-project",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "lint-staged": "lint-staged",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "fuck-code": "node detect-unused.js"
   },
   "dependencies": {
     "next": "11.1.2",
@@ -19,19 +20,23 @@
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
-    "@types/react": "17.0.24",
+    "@types/madge": "^5.0.0",
+    "@types/node": "^16.11.0",
+    "@types/react": "^17.0.24",
+    "chalk": "^2.4.2",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",
     "eslint-config-prettier": "^8.3.0",
     "husky": "^7.0.2",
     "lint-staged": "^11.1.2",
+    "madge": "^5.0.1",
     "prettier": "^2.4.1",
     "typescript": "4.4.3"
   },
   "lint-staged": {
     "**/*.{js,ts,tsx,json,jsx,scss,css}": [
       "prettier --write '**/*.{js,jsx,ts,tsx,scss,css,json}'",
-      "eslint --ext .js,.jsx,.ts,.tsx pages --color",
+      "eslint --ext .js,.jsx,.ts,.tsx interfaces pages adapters components contexts server services utils --color",
       "git add ."
     ]
   }
