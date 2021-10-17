@@ -2,6 +2,8 @@
   "name": "next-core-project",
   "version": "1.0.1",
   "private": true,
+  "author": "https://duongnamtruong.com",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
