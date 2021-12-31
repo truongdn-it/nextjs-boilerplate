@@ -1,5 +1,5 @@
 package.json
 package-lock.json
 tsconfig.json
-styles/*
+src/styles/*
 next-env.d.ts
