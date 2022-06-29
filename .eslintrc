@@ -1,8 +1,10 @@
 {
   "extends": ["next/core-web-vitals", "next", "prettier"],
+  "plugins": ["import"],
   "rules": {
     "no-console": "error",
     "no-unused-vars": "error",
-    "@next/next/no-document-import-in-page": "off"
+    "@next/next/no-document-import-in-page": "off",
+    "import/no-unused-modules": [1, { "unusedExports": true }]
   }
 }

@@ -11,7 +11,6 @@
     "lint": "next lint",
     "lint-staged": "lint-staged",
     "prepare": "husky install",
-    "fuck-code": "node detect-unused.js",
     "create-network": "docker network create my_network",
     "run:dev": "COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose -f docker-compose.dev.yml build --parallel && docker-compose -f docker-compose.dev.yml up",
     "run:prod": "COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose -f docker-compose.prod.yml build --parallel && docker-compose -f docker-compose.prod.yml up -d",
@@ -20,25 +19,22 @@
   },
   "dependencies": {
     "next": "^12.1.6",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "sass": "^1.52.3"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.53.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^13.1.0",
-    "@commitlint/config-conventional": "^13.1.0",
-    "@types/madge": "^5.0.0",
-    "@types/node": "^16.11.0",
-    "@types/react": "^17.0.24",
-    "chalk": "^2.4.2",
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
+    "@types/node": "^18.0.0",
+    "@types/react": "^18.0.14",
     "eslint": "7.32.0",
-    "eslint-config-next": "11.1.2",
-    "eslint-config-prettier": "^8.3.0",
-    "husky": "^7.0.2",
-    "lint-staged": "^11.1.2",
-    "madge": "^5.0.1",
-    "prettier": "^2.4.1",
-    "typescript": "4.4.3"
+    "eslint-config-next": "^12.2.0",
+    "eslint-config-prettier": "^8.5.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "typescript": "^4.7.4"
   },
   "lint-staged": {
     "**/*.{js,ts,tsx,json,jsx,scss,css}": [
