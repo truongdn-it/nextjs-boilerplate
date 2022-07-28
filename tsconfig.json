@@ -5,11 +5,9 @@
       "@adapters/*": ["src/adapters/*"],
       "@components/*": ["src/components/*"],
       "@contexts/*": ["src/contexts/*"],
-      "@page/*": ["src/pages/*"],
       "@services/*": ["src/services/*"],
       "@styles/*": ["src/styles/*"],
       "@utils/*": ["src/utils/*"],
-      "@interface/*": ["src/interfaces/*"],
       "@server/*": ["src/server/*"]
     },
     "target": "es5",

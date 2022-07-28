@@ -6,19 +6,18 @@ services:
     build:
       context: ./
       dockerfile: prod.Dockerfile
-      args:
-        ENV_VARIABLE: ${ENV_VARIABLE}
-        NEXT_PUBLIC_ENV_VARIABLE: ${NEXT_PUBLIC_ENV_VARIABLE}
+      # args:
+      #   NEXTAUTH_URL: ${NEXTAUTH_URL}
+      #   NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
     restart: always
     ports:
       - 3000:3000
-    networks:
-      - my_network
+    # networks:
+    #   - my_network
 
   # Add more containers below (nginx, postgres, etc.)
-
 # Define a network, which allows containers to communicate
 # with each other, by using their container name as a hostname
-networks:
-  my_network:
-    external: true
+# networks:
+#   my_network:
+#     external: true

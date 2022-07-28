@@ -1,0 +1,3 @@
+// shared components
+
+export {}
