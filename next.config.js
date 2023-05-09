@@ -7,6 +7,7 @@ module.exports = {
     includePaths: [path.join(__dirname, 'styles')],
   },
   experimental: {
-    outputStandalone: true,
+    typedRoutes: true,
   },
+  output: 'standalone',
 }
