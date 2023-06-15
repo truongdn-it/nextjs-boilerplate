@@ -12,7 +12,6 @@ const sendGet = async ({ uri, params }: IXhr) => {
       url: `${uri}?${stringParams}`,
       method: 'GET',
     })
-
     return response
   } catch (err: unknown) {
     throw err

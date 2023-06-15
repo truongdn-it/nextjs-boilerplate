@@ -7,6 +7,14 @@
 - **_Trách nhiệm với công việc_**
 - **_Chủ động thảo luận_**
 
+## UI Library ([shadcn/ui](https://ui.shadcn.com/))
+
+Add a component to project
+
+```bash
+npx shadcn-ui add
+```
+
 ## Run Locally
 
 Clone the project

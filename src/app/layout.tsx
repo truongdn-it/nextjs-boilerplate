@@ -1,26 +1,24 @@
+'use client'
+
 /* eslint-disable import/no-unused-modules */
-import '@styles/globals.scss'
-export const runtime = 'edge' // 'nodejs' (default) | 'edge'
+import '@styles/globals.css'
 
-import { ReactNode } from 'react'
+import React, { ReactNode } from 'react'
+import { Open_Sans } from 'next/font/google'
+import QueryClientProvider from '@contexts/QueryClientProvider'
+import { cn } from '@utils/helpers'
 
-export const metadata = {
-  title: 'Home',
-  description: 'Welcome to Next.js',
-}
+const openSans = Open_Sans({
+  subsets: ['vietnamese'],
+  display: 'swap',
+  variable: '--font-sans',
+})
 
-export default function RootLayout({
-  children,
-  parallel,
-}: {
-  children: ReactNode
-  parallel: ReactNode
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body>
-        {children}
-        {parallel}
+      <body className={cn(openSans.variable, 'font-sans')}>
+        <QueryClientProvider>{children}</QueryClientProvider>
       </body>
     </html>
   )

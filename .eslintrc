@@ -1,6 +1,11 @@
 {
-  "extends": ["next/core-web-vitals", "next", "prettier"],
-  "plugins": ["import"],
+  "extends": [
+    "next/core-web-vitals",
+    "next",
+    "prettier",
+    "plugin:@tanstack/eslint-plugin-query/recommended"
+  ],
+  "plugins": ["import", "@tanstack/query"],
   "rules": {
     "no-console": "error",
     "no-unused-vars": "error",
