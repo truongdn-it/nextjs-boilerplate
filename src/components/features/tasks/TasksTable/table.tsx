@@ -44,7 +44,7 @@ const DataTable = ({ initData }: { initData: any }) => {
   const { data, isFetching } = useQuery({
     queryKey: [QUERY_KEYS.GET_TASKS],
     queryFn: () => doGetTask(),
-    initialData: initData?.data || [],
+    initialData: initData,
   })
 
   const table = useReactTable({
