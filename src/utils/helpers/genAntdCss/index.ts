@@ -7,7 +7,7 @@ import { DoExtraStyleOptions } from './types'
 
 export function doExtraStyle({
   cache,
-  dir = 'css',
+  dir = 'css-bundle',
   baseFileName = 'antd.min',
 }: DoExtraStyleOptions) {
   const baseDir = path.resolve('./public')

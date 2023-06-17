@@ -1,16 +1,19 @@
 import axios from 'axios'
 import { stringify } from 'qs'
 
+import { IXhr } from './types'
+
 axios.defaults.headers.post['Content-Type'] = 'application/json'
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_BASE_URL
 
-const sendGet = async ({ uri, params }: IXhr) => {
+const sendGet = async ({ url, params, signal }: IXhr) => {
   const stringParams = stringify(params, { arrayFormat: 'repeat' })
 
   try {
     const response = await axios({
-      url: `${uri}?${stringParams}`,
+      url: `${url}?${stringParams}`,
       method: 'GET',
+      signal,
     })
     return response
   } catch (err: unknown) {
@@ -18,10 +21,10 @@ const sendGet = async ({ uri, params }: IXhr) => {
   }
 }
 
-const sendPost = async ({ uri, params, signal, config }: IXhr) => {
+const sendPost = async ({ url, params, signal, config }: IXhr) => {
   try {
     const response = await axios({
-      url: uri,
+      url,
       method: 'POST',
       data: params,
       signal,
@@ -33,12 +36,13 @@ const sendPost = async ({ uri, params, signal, config }: IXhr) => {
   }
 }
 
-const sendPut = async ({ uri, params }: IXhr) => {
+const sendPut = async ({ url, params, signal }: IXhr) => {
   try {
     const response = await axios({
-      url: uri,
+      url,
       method: 'PUT',
       data: params,
+      signal,
     })
     return response
   } catch (err: unknown) {
@@ -46,12 +50,13 @@ const sendPut = async ({ uri, params }: IXhr) => {
   }
 }
 
-const sendDelete = async ({ uri, params }: IXhr) => {
+const sendDelete = async ({ url, params, signal }: IXhr) => {
   try {
     const response = await axios({
-      url: uri,
+      url,
       method: 'DELETE',
       data: params,
+      signal,
     })
     return response
   } catch (err: unknown) {

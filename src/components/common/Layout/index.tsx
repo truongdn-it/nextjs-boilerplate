@@ -1,14 +1,14 @@
 import React from 'react'
-import { Open_Sans } from 'next/font/google'
+import { Layout as AntdLayout } from 'antd'
 
-const openSans = Open_Sans({
-  subsets: ['vietnamese'],
-  display: 'swap',
-  variable: '--font-sans',
-})
+const { Content } = AntdLayout
 
 function Layout({ children }: { children: React.ReactNode }) {
-  return <main className={openSans.className}>{children}</main>
+  return (
+    <AntdLayout>
+      <Content>{children}</Content>
+    </AntdLayout>
+  )
 }
 
 export default Layout
