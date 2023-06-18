@@ -15,7 +15,9 @@
     "run:dev": "COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose -f docker-compose.dev.yml build --parallel && docker-compose -f docker-compose.dev.yml up",
     "run:prod": "COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose -f docker-compose.prod.yml build --parallel && docker-compose -f docker-compose.prod.yml up -d",
     "stop-all-running-containers": "docker kill $(docker ps -q) && docker rm $(docker ps -a -q)",
-    "free-space": "docker system prune -af --volumes"
+    "free-space": "docker system prune -af --volumes",
+    "predev": "ts-node --project ./tsconfig.node.json ./src/utils/helpers/genAntdCss/index.ts",
+    "prebuild": "cross-env NODE_ENV=production ts-node --project ./tsconfig.node.json ./src/utils/helpers/genAntdCss/index.ts"
   },
   "dependencies": {
     "@tanstack/react-query": "^4.29.14",
