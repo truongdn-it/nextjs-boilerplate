@@ -15,11 +15,15 @@ export function doExtraStyle({
   const outputCssPath = path.join(baseDir, dir)
 
   if (fs.existsSync(outputCssPath)) {
-    fs.rmSync(outputCssPath, { recursive: true })
+    try {
+      fs.rmSync(outputCssPath, { recursive: true })
+    } catch {}
   }
 
   if (!fs.existsSync(outputCssPath)) {
-    fs.mkdirSync(outputCssPath, { recursive: true })
+    try {
+      fs.mkdirSync(outputCssPath, { recursive: true })
+    } catch {}
   }
 
   const css = extractStyle(cache, true)
@@ -34,7 +38,9 @@ export function doExtraStyle({
 
   if (fs.existsSync(fullpath)) return res
 
-  fs.writeFileSync(fullpath, css)
+  try {
+    fs.writeFileSync(fullpath, css)
+  } catch {}
 
   return res
 }
