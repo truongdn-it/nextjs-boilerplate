@@ -7,23 +7,15 @@ import { DoExtraStyleOptions } from './types'
 
 export function doExtraStyle({
   cache,
-  dir = 'css-bundle',
+  dir = 'antd-output',
   baseFileName = 'antd.min',
 }: DoExtraStyleOptions) {
-  const baseDir = path.resolve('./public')
+  const baseDir = path.resolve(__dirname, '../../static/css')
 
   const outputCssPath = path.join(baseDir, dir)
 
-  if (fs.existsSync(outputCssPath)) {
-    try {
-      fs.rmSync(outputCssPath, { recursive: true })
-    } catch {}
-  }
-
   if (!fs.existsSync(outputCssPath)) {
-    try {
-      fs.mkdirSync(outputCssPath, { recursive: true })
-    } catch {}
+    fs.mkdirSync(outputCssPath, { recursive: true })
   }
 
   const css = extractStyle(cache, true)
@@ -34,13 +26,11 @@ export function doExtraStyle({
   const fileName = `${baseFileName}.${hash.substring(0, 8)}.css`
   const fullpath = path.join(outputCssPath, fileName)
 
-  const res = `${dir}/${fileName}`
+  const res = `_next/static/css/${dir}/${fileName}`
 
   if (fs.existsSync(fullpath)) return res
 
-  try {
-    fs.writeFileSync(fullpath, css)
-  } catch {}
+  fs.writeFileSync(fullpath, css)
 
   return res
 }
