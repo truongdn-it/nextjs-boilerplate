@@ -6,3 +6,4 @@ next-env.d.ts
 public/*
 src/assets/*
 *.json
+*.scss

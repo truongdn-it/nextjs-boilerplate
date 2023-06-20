@@ -1,0 +1,40 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == xs {
+    @media (max-width: 576px) {
+      @content;
+    } // 576px
+  }
+  @if $breakpoint == sm {
+    @media (min-width: 576px) {
+      @content;
+    } //576px
+  }
+  @if $breakpoint == md {
+    @media (min-width: 768px) {
+      @content;
+    } //768px
+  }
+  @if $breakpoint == lg {
+    @media (min-width: 992px) {
+      @content;
+    } //992px
+  }
+  @if $breakpoint == xl {
+    @media (min-width: 1200px) {
+      @content;
+    } //1200px
+  }
+  @if $breakpoint == xsm {
+    @media (max-width: 374px) {
+      @content;
+    } // 375px
+  }
+}
+
+@mixin min_height($height) {
+  min-height: $height;
+}
+
+@mixin padding($padding) {
+  padding: $padding;
+}

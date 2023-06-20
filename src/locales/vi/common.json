@@ -1,0 +1,13 @@
+{
+  "module_1": {
+    "title": "Chào mừng trở lại!",
+    "description": "Danh sách công việc trong tháng này!",
+    "label": {
+      "task": "Công việc",
+      "title": "Tiêu đề",
+      "status": "Trạng thái",
+      "priority": "Độ ưu tiên",
+      "action": "Hành động"
+    }
+  }
+}

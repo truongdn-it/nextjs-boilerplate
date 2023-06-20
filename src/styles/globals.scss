@@ -1,0 +1,13 @@
+@import './common.scss';
+
+.min-h-100 {
+  @include min-height(100vh);
+}
+
+.p-0 {
+  @include padding(0);
+}
+
+.p-1 {
+  @include padding(1rem);
+}

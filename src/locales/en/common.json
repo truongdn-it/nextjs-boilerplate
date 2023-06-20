@@ -1,0 +1,13 @@
+{
+  "module_1": {
+    "title": "Welcome back!",
+    "description": "Here's a list of your tasks for this month!",
+    "label": {
+      "task": "Task",
+      "title": "Title",
+      "status": "Status",
+      "priority": "Priority",
+      "action": "Action"
+    }
+  }
+}

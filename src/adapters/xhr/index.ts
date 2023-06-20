@@ -15,7 +15,7 @@ const sendGet = async ({ url, params, signal }: IXhr) => {
       method: 'GET',
       signal,
     })
-    return response
+    return response.data
   } catch (err: unknown) {
     throw err
   }
@@ -30,7 +30,7 @@ const sendPost = async ({ url, params, signal, config }: IXhr) => {
       signal,
       ...config,
     })
-    return response
+    return response.data
   } catch (err: unknown) {
     throw err
   }
@@ -44,7 +44,7 @@ const sendPut = async ({ url, params, signal }: IXhr) => {
       data: params,
       signal,
     })
-    return response
+    return response.data
   } catch (err: unknown) {
     throw err
   }
@@ -58,7 +58,7 @@ const sendDelete = async ({ url, params, signal }: IXhr) => {
       data: params,
       signal,
     })
-    return response
+    return response.data
   } catch (err: unknown) {
     throw err
   }
