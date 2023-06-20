@@ -1,7 +1,15 @@
 {
-  "extends": ["next/core-web-vitals", "next", "prettier"],
+  "extends": [
+    "next/core-web-vitals",
+    "next",
+    "prettier",
+    "plugin:@tanstack/eslint-plugin-query/recommended"
+  ],
+  "plugins": ["import", "@tanstack/query"],
   "rules": {
     "no-console": "error",
-    "no-unused-vars": "error"
+    "no-unused-vars": "error",
+    "@next/next/no-document-import-in-page": "off",
+    "import/no-unused-modules": [1, { "unusedExports": true }]
   }
 }

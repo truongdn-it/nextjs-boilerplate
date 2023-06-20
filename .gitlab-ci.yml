@@ -1,0 +1,13 @@
+image: node:alpine
+stages:
+  - build
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+    - .next/cache/
+build:
+  stage: build
+  script:
+    - npm i
+    - npm run build

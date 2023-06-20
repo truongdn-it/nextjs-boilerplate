@@ -25,11 +25,15 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
+.env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+.env.dev
+.env.staging
 
 # vercel
 .vercel
+.parcel-cache
 package-lock.json

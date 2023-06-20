@@ -4,12 +4,13 @@
     "paths": {
       "@adapters/*": ["src/adapters/*"],
       "@components/*": ["src/components/*"],
-      "@contexts/*": ["src/contexts/*"],
-      "@page/*": ["src/pages/*"],
+      "@store/*": ["src/store/*"],
       "@services/*": ["src/services/*"],
       "@styles/*": ["src/styles/*"],
       "@utils/*": ["src/utils/*"],
-      "@interface/*": ["src/interfaces/*"]
+      "@server/*": ["src/server/*"],
+      "@locales/*": ["src/locales/*"],
+      "@hooks/*": ["src/hooks/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -23,8 +24,20 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "next-i18next.config.js"
+  ],
   "exclude": ["node_modules"]
 }
