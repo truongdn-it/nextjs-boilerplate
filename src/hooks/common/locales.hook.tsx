@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useLocalesStore } from '@store/common/locales'
+import { useLocalesStore } from 'src/stores/common/locales'
 
 const useTranslations = () => {
   const locale = useLocalesStore((state) => state.locale)

@@ -1,4 +1,4 @@
-import { localesConfig } from '@locales/locales.config'
+import { localesConfig } from '@configs/locales.config'
 import { deleteCookie, getCookie, setCookie } from 'cookies-next'
 import { create } from 'zustand'
 import {

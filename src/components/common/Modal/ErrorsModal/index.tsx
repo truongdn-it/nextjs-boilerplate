@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import { CloseCircleFilled } from '@ant-design/icons'
-import { useErrorsStore } from '@store/common/errors'
 import { Button, Col, Modal, Row, Typography } from 'antd'
+import { useErrorsStore } from 'src/stores/common/errors'
 
 import styles from './styles.module.scss'
 

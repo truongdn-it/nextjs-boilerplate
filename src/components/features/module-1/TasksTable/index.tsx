@@ -3,7 +3,7 @@ import { doGetTask } from '@adapters/module-1'
 import { useTranslations } from '@hooks/common/locales.hook'
 import { useQuery } from '@tanstack/react-query'
 import { Skeleton, Table } from 'antd'
-import { QUERY_KEYS } from '@utils/constants/routes.config'
+import { QUERY_KEYS } from '@utils/constants/routes.constant'
 
 import { columns } from './_column.config'
 

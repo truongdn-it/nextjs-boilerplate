@@ -12,7 +12,9 @@ import {
   legacyLogicalPropertiesTransformer,
   StyleProvider,
 } from '@ant-design/cssinjs'
-import { useErrorsStore } from '@store/common/errors'
+import { QUERY_CONFIG } from '@configs/query.config'
+import { THEME_CONFIG } from '@configs/theme.config'
+import { useErrorsStore } from '@stores/common/errors'
 import {
   Hydrate,
   QueryClient,
@@ -22,8 +24,6 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { ConfigProvider } from 'antd'
 import chalk from 'chalk'
 import ErrorsModal from '@components/common/Modal/ErrorsModal'
-import { QUERY_CONFIG } from '@utils/constants/query.config'
-import { THEME_CONFIG } from '@utils/constants/theme.config'
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   // eslint-disable-next-line no-unused-vars

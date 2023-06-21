@@ -4,13 +4,14 @@
     "paths": {
       "@adapters/*": ["src/adapters/*"],
       "@components/*": ["src/components/*"],
-      "@store/*": ["src/store/*"],
+      "@stores/*": ["src/stores/*"],
       "@services/*": ["src/services/*"],
       "@styles/*": ["src/styles/*"],
       "@utils/*": ["src/utils/*"],
       "@server/*": ["src/server/*"],
       "@locales/*": ["src/locales/*"],
-      "@hooks/*": ["src/hooks/*"]
+      "@hooks/*": ["src/hooks/*"],
+      "@configs/*": ["src/configs/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
