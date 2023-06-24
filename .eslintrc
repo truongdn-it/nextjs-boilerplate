@@ -20,6 +20,7 @@
     "indent": "off",
     "no-useless-catch": "off",
     "camelcase": "off",
-    "new-cap": "off"
+    "new-cap": "off",
+    "operator-linebreak": "off"
   }
 }
