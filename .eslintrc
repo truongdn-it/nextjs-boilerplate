@@ -21,6 +21,7 @@
     "no-useless-catch": "off",
     "camelcase": "off",
     "new-cap": "off",
-    "operator-linebreak": "off"
+    "operator-linebreak": "off",
+    "quotes": "off"
   }
 }
