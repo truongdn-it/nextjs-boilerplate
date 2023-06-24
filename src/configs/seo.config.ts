@@ -1,4 +1,4 @@
-import { DefaultSeoProps } from 'next-seo'
+import { DefaultSeoProps } from 'next-seo';
 
 const SEO: DefaultSeoProps = {
   title: 'Nextjs Core Project',
@@ -15,6 +15,6 @@ const SEO: DefaultSeoProps = {
     site: '@site',
     cardType: 'summary_large_image',
   },
-}
+};
 
-export { SEO }
+export { SEO };

@@ -1,8 +1,8 @@
-import React from 'react'
-import { Layout as AntdLayout } from 'antd'
-import { motion } from 'framer-motion'
+import React from 'react';
+import { Layout as AntdLayout } from 'antd';
+import { motion } from 'framer-motion';
 
-const { Content } = AntdLayout
+const { Content } = AntdLayout;
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -36,7 +36,7 @@ function Layout({ children }: { children: React.ReactNode }) {
         </motion.div>
       </Content>
     </AntdLayout>
-  )
+  );
 }
 
-export default Layout
+export default Layout;

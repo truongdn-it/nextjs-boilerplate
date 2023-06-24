@@ -1,6 +1,6 @@
-import { QueryClientConfig } from '@tanstack/react-query'
+import { QueryClientConfig } from '@tanstack/react-query';
 
-const QUERY_CONFIG = (setErrors: Function): QueryClientConfig => {
+const queryConfig = (setErrors: Function): QueryClientConfig => {
   return {
     defaultOptions: {
       queries: {
@@ -8,12 +8,12 @@ const QUERY_CONFIG = (setErrors: Function): QueryClientConfig => {
         staleTime: 1000 * 60,
         retry: 0,
         useErrorBoundary(error: any) {
-          setErrors && setErrors(error?.response?.data)
-          return false
+          setErrors && setErrors(error?.response?.data);
+          return false;
         },
       },
     },
-  }
-}
+  };
+};
 
-export { QUERY_CONFIG }
+export { queryConfig };

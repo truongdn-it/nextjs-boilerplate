@@ -1,19 +1,19 @@
-import React, { memo } from 'react'
-import { CloseCircleFilled } from '@ant-design/icons'
-import { Button, Col, Modal, Row, Typography } from 'antd'
-import { useErrorsStore } from 'src/stores/common/errors'
+import React, { memo } from 'react';
+import { CloseCircleFilled } from '@ant-design/icons';
+import { Button, Col, Modal, Row, Typography } from 'antd';
+import { useErrorsStore } from 'src/stores/common/errors';
 
-import styles from './styles.module.scss'
+import styles from './styles.module.scss';
 
-const { Text } = Typography
+const { Text } = Typography;
 
 function ErrorsModal() {
-  const errors = useErrorsStore((state) => state.errors)
-  const setErrors = useErrorsStore((state) => state.setErrors)
+  const errors = useErrorsStore((state) => state.errors);
+  const setErrors = useErrorsStore((state) => state.setErrors);
 
   const handleClose = () => {
-    setErrors(null)
-  }
+    setErrors(null);
+  };
   return (
     <Modal
       title={
@@ -44,7 +44,7 @@ function ErrorsModal() {
         </Col>
       </Row>
     </Modal>
-  )
+  );
 }
 
-export default memo(ErrorsModal)
+export default memo(ErrorsModal);

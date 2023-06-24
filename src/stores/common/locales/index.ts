@@ -1,28 +1,28 @@
-import { localesConfig } from '@configs/locales.config'
-import { deleteCookie, getCookie, setCookie } from 'cookies-next'
-import { create } from 'zustand'
+import { localesConfig } from '@configs/locales.config';
+import { deleteCookie, getCookie, setCookie } from 'cookies-next';
+import { create } from 'zustand';
 import {
   createJSONStorage,
   devtools,
   persist,
   StateStorage,
-} from 'zustand/middleware'
-import { getDictionary } from '@utils/helpers'
+} from 'zustand/middleware';
+import { getDictionary } from '@utils/helpers';
 
-import { LOCALES_COOKIE_CONFIG } from './locales.constant'
+import { LOCALES_COOKIE_CONFIG } from './locales.constant';
 
 // Custom storage object
 const storage: StateStorage = {
   getItem: (name: string) => {
-    return (getCookie(name) as string) || null
+    return (getCookie(name) as string) || null;
   },
   setItem: (name: string, value: string) => {
-    setCookie(name, value, { ...LOCALES_COOKIE_CONFIG })
+    setCookie(name, value, { ...LOCALES_COOKIE_CONFIG });
   },
   removeItem: (name: string) => {
-    deleteCookie(name)
+    deleteCookie(name);
   },
-}
+};
 
 const useLocalesStore = create<ILocalesState>()(
   devtools(
@@ -34,7 +34,7 @@ const useLocalesStore = create<ILocalesState>()(
         getDict: async (locale: TDefaultLocale) => {
           set({
             dict: await getDictionary(locale || localesConfig.defaultLocale),
-          })
+          });
         },
       }),
       {
@@ -42,14 +42,14 @@ const useLocalesStore = create<ILocalesState>()(
         storage: createJSONStorage(() => storage),
         partialize: (state) =>
           Object.fromEntries(
-            Object.entries(state).filter(([key]) => !['dict'].includes(key))
+            Object.entries(state).filter(([key]) => !['dict'].includes(key)),
           ),
-      }
+      },
     ),
     {
       name: 'locales',
-    }
-  )
-)
+    },
+  ),
+);
 
-export { useLocalesStore }
+export { useLocalesStore };

@@ -1,6 +1,6 @@
-import { vi } from 'vitest'
+import { vi } from 'vitest';
 
-HTMLCanvasElement.prototype.getContext = vi.fn() as any
+HTMLCanvasElement.prototype.getContext = vi.fn() as any;
 
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
@@ -14,4 +14,4 @@ Object.defineProperty(window, 'matchMedia', {
     removeEventListener: vi.fn(),
     dispatchEvent: vi.fn(),
   })),
-})
+});

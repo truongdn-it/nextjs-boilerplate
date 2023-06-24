@@ -1,52 +1,52 @@
 /* eslint-disable no-console */
 /* eslint-disable import/no-unused-modules */
 
-import 'antd/dist/reset.css'
-import '@styles/globals.scss'
+import 'antd/dist/reset.css';
+import '@styles/globals.scss';
 
-import React, { ReactElement, ReactNode, useEffect } from 'react'
-import { NextPage } from 'next'
-import type { AppProps, NextWebVitalsMetric } from 'next/app'
-import Head from 'next/head'
+import React, { ReactElement, ReactNode, useEffect } from 'react';
+import { NextPage } from 'next';
+import type { AppProps, NextWebVitalsMetric } from 'next/app';
+import Head from 'next/head';
 import {
   legacyLogicalPropertiesTransformer,
   StyleProvider,
-} from '@ant-design/cssinjs'
-import { QUERY_CONFIG } from '@configs/query.config'
-import { THEME_CONFIG } from '@configs/theme.config'
-import { useErrorsStore } from '@stores/common/errors'
+} from '@ant-design/cssinjs';
+import { queryConfig } from '@configs/query.config';
+import { THEME_CONFIG } from '@configs/theme.config';
+import { useErrorsStore } from '@stores/common/errors';
 import {
   Hydrate,
   QueryClient,
   QueryClientProvider,
-} from '@tanstack/react-query'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { ConfigProvider } from 'antd'
-import chalk from 'chalk'
-import ErrorsModal from '@components/common/Modal/ErrorsModal'
+} from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { ConfigProvider } from 'antd';
+import chalk from 'chalk';
+import ErrorsModal from '@components/common/Modal/ErrorsModal';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   // eslint-disable-next-line no-unused-vars
-  getLayout?: (page: ReactElement) => ReactNode
-}
+  getLayout?: (page: ReactElement) => ReactNode;
+};
 
 type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout
-}
+  Component: NextPageWithLayout;
+};
 
 function App({ Component, pageProps }: AppPropsWithLayout) {
-  const [hydated, seHydrated] = React.useState(false)
+  const [hydated, seHydrated] = React.useState(false);
 
   useEffect(() => {
-    seHydrated(true)
-  }, [])
+    seHydrated(true);
+  }, []);
 
-  const setErrors = useErrorsStore((state) => state.setErrors)
+  const setErrors = useErrorsStore((state) => state.setErrors);
 
   const [queryClient] = React.useState(
-    () => new QueryClient(QUERY_CONFIG(setErrors))
-  )
-  const getLayout = Component.getLayout ?? ((page) => page)
+    () => new QueryClient(queryConfig(setErrors)),
+  );
+  const getLayout = Component.getLayout ?? ((page) => page);
 
   return getLayout(
     <>
@@ -71,27 +71,27 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
           </ConfigProvider>
         </Hydrate>
       </QueryClientProvider>
-    </>
-  )
+    </>,
+  );
 }
 
-export default App
+export default App;
 
 export function reportWebVitals(metric: NextWebVitalsMetric) {
   switch (metric.name) {
     case 'TTFB':
       console.info(
-        chalk.green(`Thời gian phản hồi: ${(metric.value / 1000).toFixed(2)}s`)
-      )
-      break
+        chalk.green(`Thời gian phản hồi: ${(metric.value / 1000).toFixed(2)}s`),
+      );
+      break;
     case 'FCP':
       console.info(
         chalk.green(
           `Thời gian hiển thị nội dung đầu tiên: ${(
             metric.value / 1000
-          ).toFixed(2)}s`
-        )
-      )
-      break
+          ).toFixed(2)}s`,
+        ),
+      );
+      break;
   }
 }

@@ -1,11 +1,11 @@
 /* eslint-disable import/no-unused-modules */
-import { NextResponse } from 'next/server'
+import { NextResponse } from 'next/server';
 
 const MOCK_TASKS = [
   {
     id: 'TASK-8782',
     title:
-      "You can't compress the program without quantifying the open-source SSD pixel!",
+      'You can\'t compress the program without quantifying the open-source SSD pixel!',
     status: 'in progress',
     label: 'documentation',
     priority: 'medium',
@@ -36,7 +36,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-8686',
     title:
-      "I'll parse the wireless SSL protocol, that should driver the API panel!",
+      'I\'ll parse the wireless SSL protocol, that should driver the API panel!',
     status: 'canceled',
     label: 'feature',
     priority: 'medium',
@@ -60,7 +60,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-1138',
     title:
-      "Generating the driver won't do anything, we need to quantify the 1080p SMTP bandwidth!",
+      'Generating the driver won\'t do anything, we need to quantify the 1080p SMTP bandwidth!',
     status: 'in progress',
     label: 'feature',
     priority: 'medium',
@@ -75,7 +75,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-5160',
     title:
-      "Calculating the bus won't do anything, we need to navigate the back-end JSON protocol!",
+      'Calculating the bus won\'t do anything, we need to navigate the back-end JSON protocol!',
     status: 'in progress',
     label: 'documentation',
     priority: 'high',
@@ -83,7 +83,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-5618',
     title:
-      "Generating the driver won't do anything, we need to index the online SSL application!",
+      'Generating the driver won\'t do anything, we need to index the online SSL application!',
     status: 'done',
     label: 'documentation',
     priority: 'medium',
@@ -91,7 +91,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-6699',
     title:
-      "I'll transmit the wireless JBOD capacitor, that should hard drive the SSD feed!",
+      'I\'ll transmit the wireless JBOD capacitor, that should hard drive the SSD feed!',
     status: 'backlog',
     label: 'documentation',
     priority: 'medium',
@@ -106,7 +106,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-9864',
     title:
-      "I'll reboot the 1080p FTP panel, that should matrix the HEX hard drive!",
+      'I\'ll reboot the 1080p FTP panel, that should matrix the HEX hard drive!',
     status: 'done',
     label: 'bug',
     priority: 'high',
@@ -121,7 +121,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-5365',
     title:
-      "Backing up the pixel won't do anything, we need to transmit the primary IB array!",
+      'Backing up the pixel won\'t do anything, we need to transmit the primary IB array!',
     status: 'in progress',
     label: 'documentation',
     priority: 'low',
@@ -152,7 +152,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-3216',
     title:
-      "Transmitting the transmitter won't do anything, we need to compress the virtual HDD sensor!",
+      'Transmitting the transmitter won\'t do anything, we need to compress the virtual HDD sensor!',
     status: 'backlog',
     label: 'documentation',
     priority: 'medium',
@@ -168,7 +168,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-1024',
     title:
-      "Overriding the microchip won't do anything, we need to transmit the digital OCR transmitter!",
+      'Overriding the microchip won\'t do anything, we need to transmit the digital OCR transmitter!',
     status: 'in progress',
     label: 'documentation',
     priority: 'low',
@@ -176,7 +176,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-7068',
     title:
-      "You can't generate the capacitor without indexing the wireless HEX pixel!",
+      'You can\'t generate the capacitor without indexing the wireless HEX pixel!',
     status: 'canceled',
     label: 'bug',
     priority: 'low',
@@ -184,7 +184,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-6502',
     title:
-      "Navigating the microchip won't do anything, we need to bypass the back-end SQL bus!",
+      'Navigating the microchip won\'t do anything, we need to bypass the back-end SQL bus!',
     status: 'todo',
     label: 'bug',
     priority: 'high',
@@ -207,7 +207,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-1571',
     title:
-      "I'll input the neural DRAM circuit, that should protocol the SMTP interface!",
+      'I\'ll input the neural DRAM circuit, that should protocol the SMTP interface!',
     status: 'in progress',
     label: 'feature',
     priority: 'medium',
@@ -215,7 +215,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-9518',
     title:
-      "Compressing the interface won't do anything, we need to compress the online SDD matrix!",
+      'Compressing the interface won\'t do anything, we need to compress the online SDD matrix!',
     status: 'canceled',
     label: 'documentation',
     priority: 'medium',
@@ -223,7 +223,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-5581',
     title:
-      "I'll synthesize the digital COM pixel, that should transmitter the UTF8 protocol!",
+      'I\'ll synthesize the digital COM pixel, that should transmitter the UTF8 protocol!',
     status: 'backlog',
     label: 'documentation',
     priority: 'high',
@@ -231,7 +231,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-2197',
     title:
-      "Parsing the feed won't do anything, we need to copy the bluetooth DRAM bus!",
+      'Parsing the feed won\'t do anything, we need to copy the bluetooth DRAM bus!',
     status: 'todo',
     label: 'documentation',
     priority: 'low',
@@ -269,7 +269,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-1376',
     title:
-      "Generating the alarm won't do anything, we need to generate the mobile IP capacitor!",
+      'Generating the alarm won\'t do anything, we need to generate the mobile IP capacitor!',
     status: 'backlog',
     label: 'documentation',
     priority: 'low',
@@ -285,7 +285,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-2290',
     title:
-      "I'll compress the virtual JSON panel, that should application the UTF8 bus!",
+      'I\'ll compress the virtual JSON panel, that should application the UTF8 bus!',
     status: 'canceled',
     label: 'documentation',
     priority: 'high',
@@ -293,7 +293,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-1533',
     title:
-      "You can't input the firewall without overriding the wireless TCP firewall!",
+      'You can\'t input the firewall without overriding the wireless TCP firewall!',
     status: 'done',
     label: 'bug',
     priority: 'high',
@@ -301,7 +301,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-4920',
     title:
-      "Bypassing the hard drive won't do anything, we need to input the bluetooth JSON program!",
+      'Bypassing the hard drive won\'t do anything, we need to input the bluetooth JSON program!',
     status: 'in progress',
     label: 'bug',
     priority: 'high',
@@ -372,7 +372,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-8790',
     title:
-      "I'll back up the optical COM alarm, that should alarm the RSS capacitor!",
+      'I\'ll back up the optical COM alarm, that should alarm the RSS capacitor!',
     status: 'done',
     label: 'bug',
     priority: 'medium',
@@ -395,7 +395,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-5608',
     title:
-      "I'll hack the haptic SSL program, that should bus the UDP transmitter!",
+      'I\'ll hack the haptic SSL program, that should bus the UDP transmitter!',
     status: 'canceled',
     label: 'documentation',
     priority: 'low',
@@ -403,7 +403,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-1606',
     title:
-      "I'll generate the bluetooth PNG firewall, that should pixel the SSL driver!",
+      'I\'ll generate the bluetooth PNG firewall, that should pixel the SSL driver!',
     status: 'done',
     label: 'feature',
     priority: 'medium',
@@ -411,7 +411,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-7872',
     title:
-      "Transmitting the circuit won't do anything, we need to reboot the 1080p RSS monitor!",
+      'Transmitting the circuit won\'t do anything, we need to reboot the 1080p RSS monitor!',
     status: 'canceled',
     label: 'feature',
     priority: 'medium',
@@ -427,7 +427,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-9581',
     title:
-      "You can't index the port without hacking the cross-platform XSS monitor!",
+      'You can\'t index the port without hacking the cross-platform XSS monitor!',
     status: 'backlog',
     label: 'documentation',
     priority: 'low',
@@ -457,7 +457,7 @@ const MOCK_TASKS = [
   },
   {
     id: 'TASK-9549',
-    title: "You can't bypass the bus without connecting the neural JBOD bus!",
+    title: 'You can\'t bypass the bus without connecting the neural JBOD bus!',
     status: 'todo',
     label: 'feature',
     priority: 'high',
@@ -465,7 +465,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-1075',
     title:
-      "Backing up the driver won't do anything, we need to parse the redundant RAM pixel!",
+      'Backing up the driver won\'t do anything, we need to parse the redundant RAM pixel!',
     status: 'done',
     label: 'feature',
     priority: 'medium',
@@ -481,7 +481,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-1907',
     title:
-      "Hacking the circuit won't do anything, we need to back up the online DRAM system!",
+      'Hacking the circuit won\'t do anything, we need to back up the online DRAM system!',
     status: 'todo',
     label: 'documentation',
     priority: 'high',
@@ -497,7 +497,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-3973',
     title:
-      "I'll parse the back-end ADP array, that should bandwidth the RSS bandwidth!",
+      'I\'ll parse the back-end ADP array, that should bandwidth the RSS bandwidth!',
     status: 'todo',
     label: 'feature',
     priority: 'medium',
@@ -513,7 +513,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-3360',
     title:
-      "You can't quantify the program without synthesizing the neural OCR interface!",
+      'You can\'t quantify the program without synthesizing the neural OCR interface!',
     status: 'done',
     label: 'feature',
     priority: 'medium',
@@ -529,7 +529,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-3649',
     title:
-      "I'll input the virtual USB system, that should circuit the DNS monitor!",
+      'I\'ll input the virtual USB system, that should circuit the DNS monitor!',
     status: 'in progress',
     label: 'feature',
     priority: 'medium',
@@ -545,7 +545,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-5150',
     title:
-      "I'll hack the wireless XSS port, that should transmitter the IP interface!",
+      'I\'ll hack the wireless XSS port, that should transmitter the IP interface!',
     status: 'canceled',
     label: 'feature',
     priority: 'medium',
@@ -584,7 +584,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-7253',
     title:
-      "Programming the capacitor won't do anything, we need to bypass the neural IB hard drive!",
+      'Programming the capacitor won\'t do anything, we need to bypass the neural IB hard drive!',
     status: 'backlog',
     label: 'bug',
     priority: 'high',
@@ -607,7 +607,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-3922',
     title:
-      "You can't back up the capacitor without generating the wireless PCI program!",
+      'You can\'t back up the capacitor without generating the wireless PCI program!',
     status: 'backlog',
     label: 'bug',
     priority: 'low',
@@ -615,7 +615,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-4921',
     title:
-      "I'll index the open-source IP feed, that should system the GB application!",
+      'I\'ll index the open-source IP feed, that should system the GB application!',
     status: 'canceled',
     label: 'bug',
     priority: 'low',
@@ -630,7 +630,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-2645',
     title:
-      "Synthesizing the system won't do anything, we need to navigate the multi-byte HDD firewall!",
+      'Synthesizing the system won\'t do anything, we need to navigate the multi-byte HDD firewall!',
     status: 'todo',
     label: 'documentation',
     priority: 'medium',
@@ -669,7 +669,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-3838',
     title:
-      "I'll bypass the online TCP application, that should panel the AGP system!",
+      'I\'ll bypass the online TCP application, that should panel the AGP system!',
     status: 'backlog',
     label: 'bug',
     priority: 'high',
@@ -721,7 +721,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-3970',
     title:
-      "You can't index the transmitter without quantifying the haptic ASCII card!",
+      'You can\'t index the transmitter without quantifying the haptic ASCII card!',
     status: 'todo',
     label: 'documentation',
     priority: 'medium',
@@ -729,7 +729,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-4473',
     title:
-      "You can't bypass the protocol without overriding the neural RSS program!",
+      'You can\'t bypass the protocol without overriding the neural RSS program!',
     status: 'todo',
     label: 'documentation',
     priority: 'low',
@@ -737,7 +737,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-4136',
     title:
-      "You can't hack the hard drive without hacking the primary JSON program!",
+      'You can\'t hack the hard drive without hacking the primary JSON program!',
     status: 'canceled',
     label: 'bug',
     priority: 'medium',
@@ -753,7 +753,7 @@ const MOCK_TASKS = [
   {
     id: 'TASK-2007',
     title:
-      "I'll input the back-end USB protocol, that should bandwidth the PCI system!",
+      'I\'ll input the back-end USB protocol, that should bandwidth the PCI system!',
     status: 'backlog',
     label: 'bug',
     priority: 'high',
@@ -782,8 +782,8 @@ const MOCK_TASKS = [
     label: 'bug',
     priority: 'low',
   },
-]
+];
 
 export async function GET() {
-  return NextResponse.json({ data: MOCK_TASKS })
+  return NextResponse.json({ data: MOCK_TASKS });
 }

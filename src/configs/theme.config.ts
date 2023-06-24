@@ -1,11 +1,11 @@
-import { Open_Sans } from 'next/font/google'
-import type { ThemeConfig } from 'antd'
+import { Open_Sans } from 'next/font/google';
+import type { ThemeConfig } from 'antd';
 
 const openSans = Open_Sans({
   subsets: ['vietnamese'],
   display: 'swap',
   variable: '--font-sans',
-})
+});
 
 const THEME_CONFIG: ThemeConfig = {
   token: {
@@ -13,6 +13,6 @@ const THEME_CONFIG: ThemeConfig = {
           Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
           'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'`,
   },
-}
+};
 
-export { THEME_CONFIG }
+export { THEME_CONFIG };

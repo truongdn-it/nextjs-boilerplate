@@ -3,6 +3,9 @@
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  "editor.formatOnType": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,

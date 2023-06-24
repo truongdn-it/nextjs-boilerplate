@@ -2,7 +2,7 @@
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
-})
+});
 
 const securityHeaders = [
   {
@@ -21,18 +21,18 @@ const securityHeaders = [
     key: 'X-Content-Type-Options',
     value: 'nosniff',
   },
-]
+];
 
 module.exports = withBundleAnalyzer({
   reactStrictMode: true,
   output: 'standalone',
   compiler: {
     removeConsole:
-      process.env.NODE_ENV === 'production'
-        ? {
+      process.env.NODE_ENV === 'production' ?
+        {
             exclude: ['error'],
-          }
-        : false,
+          } :
+        false,
   },
   swcMinify: true,
   async headers() {
@@ -41,7 +41,7 @@ module.exports = withBundleAnalyzer({
         source: '/:path*',
         headers: securityHeaders,
       },
-    ]
+    ];
   },
   poweredByHeader: false,
-})
+});

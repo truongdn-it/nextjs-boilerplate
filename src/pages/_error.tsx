@@ -1,9 +1,9 @@
 /* eslint-disable import/no-unused-modules */
-import React from 'react'
-import Link from 'next/link'
-import { Button, Result, Row } from 'antd'
-import Layout from '@components/common/Layout'
-import { WEB_ROUTES } from '@utils/constants/routes.constant'
+import React from 'react';
+import Link from 'next/link';
+import { Button, Result, Row } from 'antd';
+import Layout from '@components/common/Layout';
+import { WEB_ROUTES } from '@utils/constants/routes.constant';
 
 function Error500() {
   return (
@@ -19,11 +19,11 @@ function Error500() {
         }
       />
     </Row>
-  )
+  );
 }
 
-export default Error500
+export default Error500;
 
 Error500.getLayout = function getLayout(page: React.ReactElement) {
-  return <Layout>{page}</Layout>
-}
+  return <Layout>{page}</Layout>;
+};

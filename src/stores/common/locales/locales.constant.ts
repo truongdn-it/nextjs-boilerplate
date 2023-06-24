@@ -3,6 +3,6 @@ const LOCALES_COOKIE_CONFIG = {
   httpOnly: false,
   secure: process.env.NEXT_PUBLIC_MODE_ENV !== 'development',
   sameSite: 'lax' as 'lax',
-}
+};
 
-export { LOCALES_COOKIE_CONFIG }
+export { LOCALES_COOKIE_CONFIG };

@@ -1,5 +1,5 @@
 const localesConfig = {
   defaultLocale: 'en' as TDefaultLocale,
-}
+};
 
-export { localesConfig }
+export { localesConfig };

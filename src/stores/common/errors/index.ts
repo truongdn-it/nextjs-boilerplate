@@ -1,5 +1,5 @@
-import { create } from 'zustand'
-import { devtools } from 'zustand/middleware'
+import { create } from 'zustand';
+import { devtools } from 'zustand/middleware';
 
 const useErrorsStore = create<IErrorsState>()(
   devtools(
@@ -9,8 +9,8 @@ const useErrorsStore = create<IErrorsState>()(
     }),
     {
       name: 'errors',
-    }
-  )
-)
+    },
+  ),
+);
 
-export { useErrorsStore }
+export { useErrorsStore };

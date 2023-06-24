@@ -1,21 +1,21 @@
 /* eslint-disable import/no-unused-modules */
-import { Suspense } from 'react'
-import { SEO } from '@configs/seo.config'
-import { useTranslations } from '@hooks/common/locales.hook'
-import { Col, Row, Select, Typography, Watermark } from 'antd'
-import { DefaultSeo } from 'next-seo'
-import { useLocalesStore } from 'src/stores/common/locales'
-import Layout from '@components/common/Layout'
-import TaskTable from '@components/features/module-1/TasksTable'
+import { Suspense } from 'react';
+import { SEO } from '@configs/seo.config';
+import { useTranslations } from '@hooks/common/locales.hook';
+import { Col, Row, Select, Typography, Watermark } from 'antd';
+import { DefaultSeo } from 'next-seo';
+import { useLocalesStore } from 'src/stores/common/locales';
+import Layout from '@components/common/Layout';
+import TaskTable from '@components/features/module-1/TasksTable';
 
-const { Title } = Typography
+const { Title } = Typography;
 
 const Home = () => {
-  const { locale, t } = useTranslations()
-  const changeLocale = useLocalesStore((state) => state.changeLocale)
+  const { locale, t } = useTranslations();
+  const changeLocale = useLocalesStore((state) => state.changeLocale);
   const handleChangeLocale = (value: TDefaultLocale) => {
-    changeLocale(value)
-  }
+    changeLocale(value);
+  };
 
   return (
     <>
@@ -45,11 +45,11 @@ const Home = () => {
         </div>
       </Watermark>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
 
 Home.getLayout = function getLayout(page: React.ReactElement) {
-  return <Layout>{page}</Layout>
-}
+  return <Layout>{page}</Layout>;
+};
