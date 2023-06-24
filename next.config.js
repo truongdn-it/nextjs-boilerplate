@@ -28,11 +28,11 @@ module.exports = withBundleAnalyzer({
   output: 'standalone',
   compiler: {
     removeConsole:
-      process.env.NODE_ENV === 'production' ?
-        {
+      process.env.NODE_ENV === 'production'
+        ? {
             exclude: ['error'],
-          } :
-        false,
+          }
+        : false,
   },
   swcMinify: true,
   async headers() {
