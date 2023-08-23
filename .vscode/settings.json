@@ -9,6 +9,8 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
-    "source.fixAll.format": true
-  }
+    "source.fixAll.format": true,
+    "source.fixAll.stylelint": true
+  },
+  "stylelint.validate": ["css", "scss"]
 }

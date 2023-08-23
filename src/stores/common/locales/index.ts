@@ -31,7 +31,7 @@ const useLocalesStore = create<ILocalesState>()(
         locale: localesConfig.defaultLocale,
         dict: {},
         changeLocale: (locale: TDefaultLocale) => set({ locale }),
-        getDict: async (locale: TDefaultLocale) => {
+        setDict: async (locale: TDefaultLocale) => {
           set({
             dict: await getDictionary(locale || localesConfig.defaultLocale),
           });

@@ -15,6 +15,7 @@ import {
 import { queryConfig } from '@configs/query.config';
 import { THEME_CONFIG } from '@configs/theme.config';
 import { useErrorsStore } from '@stores/common/errors';
+import { useLocalesStore } from '@stores/common/locales';
 import {
   Hydrate,
   QueryClient,
@@ -36,10 +37,16 @@ type AppPropsWithLayout = AppProps & {
 
 function App({ Component, pageProps }: AppPropsWithLayout) {
   const [hydated, seHydrated] = React.useState(false);
+  const setDict = useLocalesStore((state) => state.setDict);
+  const locale = useLocalesStore((state) => state.locale);
 
   useEffect(() => {
     seHydrated(true);
   }, []);
+
+  useEffect(() => {
+    hydated && setDict(locale);
+  }, [hydated, locale, setDict]);
 
   const setErrors = useErrorsStore((state) => state.setErrors);
 
