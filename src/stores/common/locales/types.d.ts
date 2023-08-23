@@ -3,7 +3,7 @@ interface ILocalesState {
   locale: TDefaultLocale;
   dict: any;
   changeLocale: (locale: TDefaultLocale) => void;
-  getDict: (locale: TDefaultLocale) => void;
+  setDict: (locale: TDefaultLocale) => void;
 }
 
 type TDefaultLocale = 'en' | 'vi';

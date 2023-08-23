@@ -1,10 +1,8 @@
-import { useEffect } from 'react';
-import { useLocalesStore } from 'src/stores/common/locales';
+import { useLocalesStore } from '@stores/common/locales';
 
 const useTranslations = () => {
   const locale = useLocalesStore((state) => state.locale);
   const dict = useLocalesStore((state) => state.dict);
-  const getDict = useLocalesStore((state) => state.getDict);
 
   const t = (key: string, options?: any) => {
     if (!dict) return key;
@@ -24,10 +22,6 @@ const useTranslations = () => {
 
     return value;
   };
-
-  useEffect(() => {
-    getDict(locale);
-  }, [locale, getDict]);
 
   return { locale, t };
 };
