@@ -44,4 +44,7 @@ module.exports = withBundleAnalyzer({
     ];
   },
   poweredByHeader: false,
+  images: {
+    domains: [],
+  },
 });
