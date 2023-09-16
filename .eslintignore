@@ -7,3 +7,4 @@ public/*
 src/assets/*
 *.json
 *.scss
+*.d.ts

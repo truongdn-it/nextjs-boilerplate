@@ -5,7 +5,7 @@ valid_branch_regex='^((feat|feedback|hotfix|revert|reset|force|refactor|fix)\/[a
 
 message="Branch name invalidate, regex: $valid_branch_regex"
 
-if [[ ! $local_branch_name =~ $valid_branch_regex ]]; then
+if ! echo "$local_branch_name" | grep -Eq "$valid_branch_regex"; then
     echo "$message"
     exit 1
 fi

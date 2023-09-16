@@ -4,7 +4,7 @@ import { stringify } from 'qs';
 import { IXhr } from './types';
 
 axios.defaults.headers.post['Content-Type'] = 'application/json';
-axios.defaults.baseURL = process.env.NEXT_PUBLIC_BASE_URL;
+axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_ENDPOINT;
 
 const sendGet = async ({ url, params, signal }: IXhr) => {
   const stringParams = stringify(params, { arrayFormat: 'repeat' });

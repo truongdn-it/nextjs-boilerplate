@@ -14,7 +14,6 @@ import {
 } from '@ant-design/cssinjs';
 import { queryConfig } from '@configs/query.config';
 import { THEME_CONFIG } from '@configs/theme.config';
-import { useErrorsStore } from '@stores/common/errors';
 import { useLocalesStore } from '@stores/common/locales';
 import {
   Hydrate,
@@ -22,9 +21,8 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { ConfigProvider } from 'antd';
+import { App as AppAntd, ConfigProvider } from 'antd';
 import chalk from 'chalk';
-import ErrorsModal from '@components/common/Modal/ErrorsModal';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   // eslint-disable-next-line no-unused-vars
@@ -48,14 +46,10 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
     hydated && setDict(locale);
   }, [hydated, locale, setDict]);
 
-  const setErrors = useErrorsStore((state) => state.setErrors);
-
-  const [queryClient] = React.useState(
-    () => new QueryClient(queryConfig(setErrors)),
-  );
+  const [queryClient] = React.useState(() => new QueryClient(queryConfig()));
   const getLayout = Component.getLayout ?? ((page) => page);
 
-  return getLayout(
+  return (
     <>
       <Head>
         <meta
@@ -68,17 +62,16 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
           <ConfigProvider autoInsertSpaceInButton={false} theme={THEME_CONFIG}>
             <StyleProvider transformers={[legacyLogicalPropertiesTransformer]}>
               {hydated && (
-                <>
-                  <Component {...pageProps} />
-                  <ErrorsModal />
-                </>
+                <AppAntd notification={{ placement: 'topRight' }}>
+                  {getLayout(<Component {...pageProps} />)}
+                </AppAntd>
               )}
             </StyleProvider>
-            <ReactQueryDevtools initialIsOpen={true} />
+            <ReactQueryDevtools initialIsOpen={false} />
           </ConfigProvider>
         </Hydrate>
       </QueryClientProvider>
-    </>,
+    </>
   );
 }
 
