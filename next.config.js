@@ -49,9 +49,6 @@ module.exports = withBundleAnalyzer({
     domains: [],
   },
 
-  experimental: {
-    ppr: true,
-  },
   logging: {
     fetches: {
       fullUrl: true,
