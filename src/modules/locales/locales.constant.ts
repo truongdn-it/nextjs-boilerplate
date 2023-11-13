@@ -5,4 +5,8 @@ const LOCALES_COOKIE_CONFIG = {
   sameSite: 'lax' as 'lax',
 };
 
-export { LOCALES_COOKIE_CONFIG };
+const LOCALES_CONFIG = {
+  defaultLocale: 'en' as TDefaultLocale,
+};
+
+export { LOCALES_COOKIE_CONFIG, LOCALES_CONFIG };

@@ -2,17 +2,12 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@adapters/*": ["src/adapters/*"],
+      "@/*": ["src/*"],
       "@components/*": ["src/components/*"],
-      "@stores/*": ["src/stores/*"],
       "@services/*": ["src/services/*"],
       "@styles/*": ["src/styles/*"],
       "@utils/*": ["src/utils/*"],
-      "@server/*": ["src/server/*"],
-      "@locales/*": ["src/locales/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@configs/*": ["src/configs/*"],
-      "@scripts/*": ["scripts/*"]
+      "@modules/*": ["src/modules/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],

@@ -2,6 +2,8 @@ import React from 'react';
 import { Layout as AntdLayout } from 'antd';
 import { motion } from 'framer-motion';
 
+import ErrorsModal from '../../modals/errors-modal';
+
 const { Content } = AntdLayout;
 
 function Layout({ children }: { children: React.ReactNode }) {
@@ -34,6 +36,7 @@ function Layout({ children }: { children: React.ReactNode }) {
         >
           {children}
         </motion.div>
+        <ErrorsModal />
       </Content>
     </AntdLayout>
   );

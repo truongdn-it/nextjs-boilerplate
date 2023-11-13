@@ -1,11 +1,11 @@
 /* eslint-disable import/no-unused-modules */
 import React from 'react';
 import Link from 'next/link';
-import { SEO } from '@configs/seo.config';
+import Layout from '@/components/common/layouts/base-layout';
+import { SEO } from '@/modules/seo/seo.constant';
 import { Button, Result, Row } from 'antd';
 import { DefaultSeo } from 'next-seo';
-import Layout from '@components/common/Layout';
-import { WEB_ROUTES } from '@utils/constants/routes.constant';
+import { WEB_ROUTES } from '@utils/constants';
 
 function Error500() {
   return (
