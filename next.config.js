@@ -44,7 +44,17 @@ module.exports = withBundleAnalyzer({
     ];
   },
   poweredByHeader: false,
+
   images: {
     domains: [],
+  },
+
+  experimental: {
+    ppr: true,
+  },
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
   },
 });

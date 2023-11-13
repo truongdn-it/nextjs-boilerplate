@@ -8,15 +8,16 @@ import React, { ReactElement, ReactNode, useEffect } from 'react';
 import { NextPage } from 'next';
 import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import Head from 'next/head';
+import { useErrorsStore } from '@/components/common/modals/errors-modal/errors-modal.store';
+import { THEME_CONFIG } from '@/modules/antd/antd.constant';
+import { useLocalesStore } from '@/modules/locales/locales.store';
+import { queryConfig } from '@/modules/react-query/react-query.helper';
 import {
   legacyLogicalPropertiesTransformer,
   StyleProvider,
 } from '@ant-design/cssinjs';
-import { queryConfig } from '@configs/query.config';
-import { THEME_CONFIG } from '@configs/theme.config';
-import { useLocalesStore } from '@stores/common/locales';
 import {
-  Hydrate,
+  HydrationBoundary,
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query';
@@ -37,6 +38,7 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
   const [hydated, seHydrated] = React.useState(false);
   const setDict = useLocalesStore((state) => state.setDict);
   const locale = useLocalesStore((state) => state.locale);
+  const setErrors = useErrorsStore((state) => state.setErrors);
 
   useEffect(() => {
     seHydrated(true);
@@ -46,7 +48,9 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
     hydated && setDict(locale);
   }, [hydated, locale, setDict]);
 
-  const [queryClient] = React.useState(() => new QueryClient(queryConfig()));
+  const [queryClient] = React.useState(
+    () => new QueryClient(queryConfig(setErrors)),
+  );
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
@@ -58,18 +62,19 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
         />
       </Head>
       <QueryClientProvider client={queryClient}>
-        <Hydrate state={pageProps.dehydratedState}>
+        <HydrationBoundary state={pageProps.dehydratedState}>
           <ConfigProvider autoInsertSpaceInButton={false} theme={THEME_CONFIG}>
             <StyleProvider transformers={[legacyLogicalPropertiesTransformer]}>
-              {hydated && (
-                <AppAntd notification={{ placement: 'topRight' }}>
-                  {getLayout(<Component {...pageProps} />)}
-                </AppAntd>
-              )}
+              {hydated &&
+                getLayout(
+                  <AppAntd notification={{ placement: 'topRight' }}>
+                    <Component {...pageProps} />
+                  </AppAntd>,
+                )}
             </StyleProvider>
             <ReactQueryDevtools initialIsOpen={false} />
           </ConfigProvider>
-        </Hydrate>
+        </HydrationBoundary>
       </QueryClientProvider>
     </>
   );

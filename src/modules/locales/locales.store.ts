@@ -1,4 +1,4 @@
-import { localesConfig } from '@configs/locales.config';
+import { getDictionary } from '@/modules/locales/locales.helper';
 import { deleteCookie, getCookie, setCookie } from 'cookies-next';
 import { create } from 'zustand';
 import {
@@ -7,9 +7,8 @@ import {
   persist,
   StateStorage,
 } from 'zustand/middleware';
-import { getDictionary } from '@utils/helpers';
 
-import { LOCALES_COOKIE_CONFIG } from './locales.constant';
+import { LOCALES_CONFIG, LOCALES_COOKIE_CONFIG } from './locales.constant';
 
 // Custom storage object
 const storage: StateStorage = {
@@ -28,12 +27,12 @@ const useLocalesStore = create<ILocalesState>()(
   devtools(
     persist(
       (set) => ({
-        locale: localesConfig.defaultLocale,
+        locale: LOCALES_CONFIG.defaultLocale,
         dict: {},
         changeLocale: (locale: TDefaultLocale) => set({ locale }),
         setDict: async (locale: TDefaultLocale) => {
           set({
-            dict: await getDictionary(locale || localesConfig.defaultLocale),
+            dict: await getDictionary(locale || LOCALES_CONFIG.defaultLocale),
           });
         },
       }),

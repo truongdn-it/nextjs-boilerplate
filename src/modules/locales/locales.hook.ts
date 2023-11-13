@@ -1,4 +1,4 @@
-import { useLocalesStore } from '@stores/common/locales';
+import { useLocalesStore } from '@/modules/locales/locales.store';
 
 const useTranslations = () => {
   const locale = useLocalesStore((state) => state.locale);

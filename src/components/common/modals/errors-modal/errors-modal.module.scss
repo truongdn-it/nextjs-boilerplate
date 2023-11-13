@@ -1,0 +1,14 @@
+/* stylelint-disable selector-class-pattern */
+.errorIcon {
+  font-size: 22px;
+  color: red;
+}
+
+.errorTitle {
+  font-size: 16px;
+}
+
+.errorContent {
+  display: flex;
+  justify-content: center;
+}
