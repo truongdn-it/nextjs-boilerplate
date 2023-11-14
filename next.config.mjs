@@ -1,6 +1,10 @@
+import './env.mjs';
+
 /** @type {import('next').NextConfig} */
 
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
+import withBundleAnalyzer from '@next/bundle-analyzer';
+
+const runWithBundleAnalyzer = withBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 });
 
@@ -23,7 +27,7 @@ const securityHeaders = [
   },
 ];
 
-module.exports = withBundleAnalyzer({
+export default runWithBundleAnalyzer({
   reactStrictMode: true,
   output: 'standalone',
   compiler: {

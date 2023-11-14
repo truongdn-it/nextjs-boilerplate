@@ -1,12 +1,13 @@
 import axios from 'axios';
 import { stringify } from 'qs';
 
+import { env } from '../../../env.mjs';
 import { IXhr } from './http';
 
-export default class HttpClient {
+class HttpClient {
   constructor() {
     axios.defaults.headers.post['Content-Type'] = 'application/json';
-    axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_ENDPOINT;
+    axios.defaults.baseURL = env.NEXT_PUBLIC_API_ENDPOINT;
   }
 
   public async sendGet({ params, url, signal, headers }: IXhr) {
@@ -82,3 +83,5 @@ export default class HttpClient {
     };
   }
 }
+
+export default HttpClient;
