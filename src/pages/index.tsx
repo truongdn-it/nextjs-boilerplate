@@ -1,12 +1,12 @@
 /* eslint-disable import/no-unused-modules */
 import { Suspense } from 'react';
-import Layout from '@/components/common/layouts/base-layout';
-import TaskTable from '@/components/features/todos/tasks-table';
-import { useTranslations } from '@/modules/locales/locales.hook';
-import { useLocalesStore } from '@/modules/locales/locales.store';
-import { SEO } from '@/modules/seo/seo.constant';
 import { Col, Row, Select, Typography, Watermark } from 'antd';
 import { DefaultSeo } from 'next-seo';
+import Layout from '@components/common/layouts/base-layout';
+import TaskTable from '@components/features/todos/tasks-table';
+import { SEO } from '@utils/constants/seo.constant';
+import { useTranslations } from '@utils/helpers/locales/locales.hook';
+import { useLocalesStore } from '@utils/helpers/locales/locales.store';
 
 const { Title } = Typography;
 

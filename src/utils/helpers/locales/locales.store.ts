@@ -1,4 +1,3 @@
-import { getDictionary } from '@/modules/locales/locales.helper';
 import { deleteCookie, getCookie, setCookie } from 'cookies-next';
 import { create } from 'zustand';
 import {
@@ -7,6 +6,7 @@ import {
   persist,
   StateStorage,
 } from 'zustand/middleware';
+import { getDictionary } from '@utils/helpers/locales/locales.helper';
 
 import { LOCALES_CONFIG, LOCALES_COOKIE_CONFIG } from './locales.constant';
 
