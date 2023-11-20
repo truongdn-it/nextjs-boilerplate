@@ -1,5 +1,5 @@
-import HttpClient from '@/services/http';
-import { API_ROUTES } from '@utils/constants';
+import HttpClient from '@services/http';
+import { API_ROUTES } from '@utils/constants/common.constant';
 
 const Http = new HttpClient();
 

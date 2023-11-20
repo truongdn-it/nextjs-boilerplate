@@ -7,7 +7,6 @@
       "@services/*": ["src/services/*"],
       "@styles/*": ["src/styles/*"],
       "@utils/*": ["src/utils/*"],
-      "@modules/*": ["src/modules/*"],
       "@scripts/*": ["scripts/*"]
     },
     "target": "es5",

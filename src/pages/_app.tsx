@@ -7,11 +7,8 @@ import '@styles/globals.scss';
 import React, { ReactElement, ReactNode, useEffect } from 'react';
 import { NextPage } from 'next';
 import type { AppProps, NextWebVitalsMetric } from 'next/app';
+import { Open_Sans } from 'next/font/google';
 import Head from 'next/head';
-import { useErrorsStore } from '@/components/common/modals/errors-modal/errors-modal.store';
-import { THEME_CONFIG } from '@/modules/antd/antd.constant';
-import { useLocalesStore } from '@/modules/locales/locales.store';
-import { queryConfig } from '@/modules/react-query/react-query.helper';
 import {
   legacyLogicalPropertiesTransformer,
   StyleProvider,
@@ -23,7 +20,11 @@ import {
 } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { App as AppAntd, ConfigProvider } from 'antd';
+import type { ThemeConfig } from 'antd';
 import chalk from 'chalk';
+import { useErrorsStore } from '@components/common/modals/errors-modal/errors-modal.store';
+import { useLocalesStore } from '@utils/helpers/locales/locales.store';
+import { queryConfig } from '@utils/helpers/queries/queries.helper';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   // eslint-disable-next-line no-unused-vars
@@ -33,6 +34,12 @@ export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
+
+const openSans = Open_Sans({
+  subsets: ['vietnamese'],
+  display: 'swap',
+  variable: '--font-sans',
+});
 
 function App({ Component, pageProps }: AppPropsWithLayout) {
   const [hydated, seHydrated] = React.useState(false);
@@ -52,6 +59,14 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
     () => new QueryClient(queryConfig(setErrors)),
   );
   const getLayout = Component.getLayout ?? ((page) => page);
+
+  const THEME_CONFIG: ThemeConfig = {
+    token: {
+      fontFamily: `${openSans.style.fontFamily}, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+          Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+          'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'`,
+    },
+  };
 
   return (
     <>

@@ -2,10 +2,10 @@
 import React from 'react';
 import Link from 'next/link';
 import Layout from '@/components/common/layouts/base-layout';
-import { SEO } from '@/modules/seo/seo.constant';
+import { SEO } from '@/utils/constants/seo.constant';
 import { Button, Result, Row } from 'antd';
 import { DefaultSeo } from 'next-seo';
-import { WEB_ROUTES } from '@utils/constants';
+import { WEB_ROUTES } from '@utils/constants/common.constant';
 
 function Error404() {
   return (

@@ -1,9 +1,9 @@
 import React from 'react';
-import { useTranslations } from '@/modules/locales/locales.hook';
-import { QUERY_KEYS } from '@modules/react-query';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { Skeleton, Table } from 'antd';
 import { doGetTask } from '@components/features/todos';
+import { useTranslations } from '@utils/helpers/locales/locales.hook';
+import { QUERY_KEYS } from '@utils/helpers/queries';
 
 import { columns } from './tasks-column.component';
 

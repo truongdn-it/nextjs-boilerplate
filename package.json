@@ -16,7 +16,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "ANALYZE=true next build",
-    "start": "next start",
+    "start": "node .next/standalone/server.js",
     "lint": "next lint",
     "lint-staged": "lint-staged",
     "prepare": "husky install",
