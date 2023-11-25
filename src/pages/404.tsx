@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unused-modules */
 import React from 'react';
 import Link from 'next/link';
-import Layout from '@/components/common/layouts/base-layout';
+import Layout from '@/components/common/layout/base-layout';
 import { SEO } from '@/utils/constants/seo.constant';
 import { Button, Result, Row } from 'antd';
 import { DefaultSeo } from 'next-seo';

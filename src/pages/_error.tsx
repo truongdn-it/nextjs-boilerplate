@@ -1,9 +1,9 @@
 /* eslint-disable import/no-unused-modules */
 import React from 'react';
 import Link from 'next/link';
+import Layout from '@/components/common/layout/base-layout';
 import { Button, Result, Row } from 'antd';
 import { DefaultSeo } from 'next-seo';
-import Layout from '@components/common/layouts/base-layout';
 import { WEB_ROUTES } from '@utils/constants/common.constant';
 import { SEO } from '@utils/constants/seo.constant';
 

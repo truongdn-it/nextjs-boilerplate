@@ -1,9 +1,8 @@
 import React from 'react';
 import { Layout as AntdLayout } from 'antd';
 import { motion } from 'framer-motion';
-
-import Footer from '../../footer';
-import ErrorsModal from '../../modals/errors-modal';
+import Footer from '@components/common/footer/copyright-footer';
+import ErrorsModal from '@components/common/modal/errors-modal';
 
 const { Content } = AntdLayout;
 

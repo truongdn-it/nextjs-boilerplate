@@ -8,3 +8,4 @@ src/assets/*
 *.json
 *.scss
 *.d.ts
+!.storybook

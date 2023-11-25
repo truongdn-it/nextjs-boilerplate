@@ -9,6 +9,7 @@ import { NextPage } from 'next';
 import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import { Open_Sans } from 'next/font/google';
 import Head from 'next/head';
+import { useErrorsStore } from '@/components/common/modal/errors-modal/errors-modal.store';
 import {
   legacyLogicalPropertiesTransformer,
   StyleProvider,
@@ -22,7 +23,6 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { App as AppAntd, ConfigProvider } from 'antd';
 import type { ThemeConfig } from 'antd';
 import chalk from 'chalk';
-import { useErrorsStore } from '@components/common/modals/errors-modal/errors-modal.store';
 import { useLocalesStore } from '@utils/helpers/locales/locales.store';
 import { queryConfig } from '@utils/helpers/queries/queries.helper';
 

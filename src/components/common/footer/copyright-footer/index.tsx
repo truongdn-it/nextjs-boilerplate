@@ -1,12 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
 
-import styles from './footer.module.scss';
+import styles from './copyright-footer.module.scss';
 
-export function Footer() {
+function CopyrightFooter() {
   return (
     <footer className={styles.footer}>
-      NextJs boilerplate ©2023 Created by{' '}
+      NextJS Boilerplate &copy; {new Date().getFullYear()}. Created by{' '}
       <Link
         className={styles.footerLink}
         href="https://github.com/truongdn-it/nextjs-boilerplate"
@@ -17,3 +17,5 @@ export function Footer() {
     </footer>
   );
 }
+
+export default CopyrightFooter;
