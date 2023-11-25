@@ -9,6 +9,8 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    layout: 'centered',
+    tags: ['autodocs'],
   },
 };
 

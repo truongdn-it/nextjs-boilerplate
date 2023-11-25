@@ -1,8 +1,8 @@
 /* eslint-disable import/no-unused-modules */
 import { Suspense } from 'react';
+import Layout from '@/components/common/layout/base-layout';
 import { Col, Row, Select, Typography, Watermark } from 'antd';
 import { DefaultSeo } from 'next-seo';
-import Layout from '@components/common/layouts/base-layout';
 import TaskTable from '@components/features/todos/tasks-table';
 import { SEO } from '@utils/constants/seo.constant';
 import { useTranslations } from '@utils/helpers/locales/locales.hook';

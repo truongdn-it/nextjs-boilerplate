@@ -1,15 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Footer from './index';
+import CopyrightFooter from '.';
 
 const meta = {
-  title: 'Common/Footer',
-  component: Footer,
-  parameters: {
-    layout: 'centered',
-  },
-  tags: ['autodocs'],
-} satisfies Meta<typeof Footer>;
+  title: 'components/common/copyright-footer',
+  component: CopyrightFooter,
+} satisfies Meta<typeof CopyrightFooter>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
