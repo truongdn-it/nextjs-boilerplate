@@ -1,6 +1,8 @@
 /* eslint-disable import/no-unused-modules */
 import { Suspense } from 'react';
 import Layout from '@/components/common/layout/base-layout';
+import { TodoQuery } from '@/services/apollo/adapters/todos.adapter';
+import { initializeApollo } from '@/services/apollo/client';
 import { Col, Row, Select, Typography, Watermark } from 'antd';
 import { DefaultSeo } from 'next-seo';
 import TaskTable from '@components/features/todos/tasks-table';
@@ -49,6 +51,20 @@ const Home = () => {
 };
 
 export default Home;
+
+export async function getStaticProps() {
+  const apolloClient = initializeApollo();
+
+  await apolloClient.query({
+    query: TodoQuery,
+  });
+
+  return {
+    props: {
+      initialApolloState: apolloClient.cache.extract(),
+    },
+  };
+}
 
 Home.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout>{page}</Layout>;

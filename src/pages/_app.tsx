@@ -14,6 +14,9 @@ import {
   legacyLogicalPropertiesTransformer,
   StyleProvider,
 } from '@ant-design/cssinjs';
+import { ApolloProvider } from '@apollo/client';
+import { loadDevMessages, loadErrorMessages } from '@apollo/client/dev';
+import { useApollo } from '@services/apollo/client';
 import {
   HydrationBoundary,
   QueryClient,
@@ -68,6 +71,13 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
     },
   };
 
+  const apolloClient = useApollo(pageProps.initialApolloState);
+
+  if (process.env.NODE_ENV === 'development') {
+    loadDevMessages();
+    loadErrorMessages();
+  }
+
   return (
     <>
       <Head>
@@ -80,12 +90,14 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
         <HydrationBoundary state={pageProps.dehydratedState}>
           <ConfigProvider autoInsertSpaceInButton={false} theme={THEME_CONFIG}>
             <StyleProvider transformers={[legacyLogicalPropertiesTransformer]}>
-              {hydated &&
-                getLayout(
-                  <AppAntd notification={{ placement: 'topRight' }}>
-                    <Component {...pageProps} />
-                  </AppAntd>,
-                )}
+              <ApolloProvider client={apolloClient}>
+                {hydated &&
+                  getLayout(
+                    <AppAntd notification={{ placement: 'topRight' }}>
+                      <Component {...pageProps} />
+                    </AppAntd>,
+                  )}
+              </ApolloProvider>
             </StyleProvider>
             <ReactQueryDevtools initialIsOpen={false} />
           </ConfigProvider>
