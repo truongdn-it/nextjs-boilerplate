@@ -9,3 +9,4 @@ src/assets/*
 *.scss
 *.d.ts
 !.storybook
+src/__generated__
