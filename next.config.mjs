@@ -52,10 +52,4 @@ export default runWithBundleAnalyzer({
   images: {
     domains: [],
   },
-
-  logging: {
-    fetches: {
-      fullUrl: true,
-    },
-  },
 });

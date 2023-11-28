@@ -1,4 +1,4 @@
-image: node:alpine
+image: node:lts
 stages:
   - build
 cache:
@@ -9,5 +9,5 @@ cache:
 build:
   stage: build
   script:
-    - npm i
-    - npm run build
+    - yarn install
+    - yarn build
