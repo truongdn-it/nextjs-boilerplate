@@ -45,7 +45,7 @@ const Home = () => {
 
 export default Home;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const apolloClient = initializeApollo();
   await apolloClient.query({
     query: TodoQuery,
