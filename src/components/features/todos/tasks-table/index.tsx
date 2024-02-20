@@ -1,19 +1,15 @@
 import React from 'react';
-import { TodoQuery } from '@/services/apollo/adapters/todos.adapter';
+// import { doGetTask } from '@/adapters/todos';
+// import { QUERY_KEYS } from '@/utils/constants';
+import { TodoQuery } from '@/adapters/todos';
 import { useQuery } from '@apollo/client';
 // import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { Skeleton, Table } from 'antd';
-// import { doGetTask } from '@components/features/todos';
-import { useTranslations } from '@utils/helpers/locales/locales.hook';
 
-// import { QUERY_KEYS } from '@utils/helpers/queries';
-
-import { columns } from './tasks-column.component';
+import { columns } from './columns';
 
 function TaskTable() {
-  const { t } = useTranslations();
-
-  // const { data, isLoading } = useQuery({
+  // const { data, isLoading: loading } = useQuery({
   //   queryKey: [QUERY_KEYS.GET_TASKS],
   //   queryFn: doGetTask,
   //   placeholderData: keepPreviousData,
@@ -24,7 +20,7 @@ function TaskTable() {
   return (
     <Skeleton loading={loading} active paragraph={{ rows: 20 }}>
       <Table
-        columns={columns(t)}
+        columns={columns()}
         dataSource={data?.getTodos as any}
         rowKey={'id'}
       />

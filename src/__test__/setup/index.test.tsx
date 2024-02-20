@@ -1,6 +1,6 @@
 import React from 'react';
 import { MOCK_TASKS } from '@/mocks';
-import { TodoQuery } from '@/services/apollo/adapters/todos.adapter';
+import { TodoQuery } from '@adapters/todos';
 import { MockedProvider } from '@apollo/client/testing';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { render, screen } from '@testing-library/react';
@@ -30,5 +30,5 @@ test('Home page', () => {
     </QueryClientProvider>,
   );
 
-  expect(screen.getByText('title')).toBeDefined();
+  expect(screen.getByText('Welcome back!')).toBeDefined();
 });

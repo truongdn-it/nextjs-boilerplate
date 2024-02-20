@@ -4,12 +4,12 @@
 import 'antd/dist/reset.css';
 import '@styles/globals.scss';
 
-import React, { ReactElement, ReactNode, useEffect } from 'react';
+import React, { ReactElement, ReactNode } from 'react';
 import { NextPage } from 'next';
 import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import { Open_Sans } from 'next/font/google';
 import Head from 'next/head';
-import { useErrorsStore } from '@/components/common/modal/errors-modal/errors-modal.store';
+import { REACT_QUERY_CONFIG } from '@/utils/constants';
 import {
   legacyLogicalPropertiesTransformer,
   StyleProvider,
@@ -26,8 +26,6 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { App as AppAntd, ConfigProvider } from 'antd';
 import type { ThemeConfig } from 'antd';
 import chalk from 'chalk';
-import { useLocalesStore } from '@utils/helpers/locales/locales.store';
-import { queryConfig } from '@utils/helpers/queries/queries.helper';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   // eslint-disable-next-line no-unused-vars
@@ -45,21 +43,8 @@ const openSans = Open_Sans({
 });
 
 function App({ Component, pageProps }: AppPropsWithLayout) {
-  const [hydated, seHydrated] = React.useState(false);
-  const setDict = useLocalesStore((state) => state.setDict);
-  const locale = useLocalesStore((state) => state.locale);
-  const setErrors = useErrorsStore((state) => state.setErrors);
-
-  useEffect(() => {
-    seHydrated(true);
-  }, []);
-
-  useEffect(() => {
-    hydated && setDict(locale);
-  }, [hydated, locale, setDict]);
-
   const [queryClient] = React.useState(
-    () => new QueryClient(queryConfig(setErrors)),
+    () => new QueryClient(REACT_QUERY_CONFIG),
   );
   const getLayout = Component.getLayout ?? ((page) => page);
 
@@ -91,12 +76,11 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
           <ConfigProvider autoInsertSpaceInButton={false} theme={THEME_CONFIG}>
             <StyleProvider transformers={[legacyLogicalPropertiesTransformer]}>
               <ApolloProvider client={apolloClient}>
-                {hydated &&
-                  getLayout(
-                    <AppAntd notification={{ placement: 'topRight' }}>
-                      <Component {...pageProps} />
-                    </AppAntd>,
-                  )}
+                {getLayout(
+                  <AppAntd notification={{ placement: 'topRight' }}>
+                    <Component {...pageProps} />
+                  </AppAntd>,
+                )}
               </ApolloProvider>
             </StyleProvider>
             <ReactQueryDevtools initialIsOpen={false} />

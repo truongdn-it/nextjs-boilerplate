@@ -1,8 +1,8 @@
 import axios from 'axios';
+import { env } from 'env.mjs';
 import { stringify } from 'qs';
 
-import { env } from '../../../env.mjs';
-import { IXhr } from './http';
+import { IXhr } from './types';
 
 class HttpClient {
   constructor() {
@@ -10,7 +10,7 @@ class HttpClient {
     axios.defaults.baseURL = env.NEXT_PUBLIC_API_ENDPOINT;
   }
 
-  public async sendGet({ params, url, signal, headers }: IXhr) {
+  static async sendGet({ params, url, signal, headers }: IXhr) {
     const stringParams = stringify(params, { arrayFormat: 'repeat' });
 
     try {
@@ -28,7 +28,7 @@ class HttpClient {
     }
   }
 
-  public async sendPost({ url, params, signal, headers }: IXhr) {
+  static async sendPost({ url, params, signal, headers }: IXhr) {
     try {
       const response = await axios({
         url,
@@ -45,7 +45,7 @@ class HttpClient {
     }
   }
 
-  public async sendPut() {
+  static async sendPut() {
     async ({ url, params, signal, headers }: IXhr) => {
       try {
         const response = await axios({
@@ -64,7 +64,7 @@ class HttpClient {
     };
   }
 
-  public async sendDelete() {
+  static async sendDelete() {
     async ({ url, params, signal, headers }: IXhr) => {
       try {
         const response = await axios({
