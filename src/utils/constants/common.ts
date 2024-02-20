@@ -1,9 +1,4 @@
-import { QueryClientConfig } from '@tanstack/react-query';
-import { AxiosError } from 'axios';
 import { DefaultSeoProps } from 'next-seo';
-import Swal from 'sweetalert2';
-
-import { getSweetErrorConfig } from '../helpers';
 
 const API_ROUTES = {
   GET_TASKS: '/api/get-tasks',
@@ -36,12 +31,16 @@ const SEO: DefaultSeoProps = {
 
 const NO_IMAGE = '/common/no-avatar.png';
 
+const ACCESS_TOKEN_STORAGE_KEY = 'accessToken';
+
 const ACCESS_TOKEN_COOKIE_CONFIG = {
   maxAge: 60 * 5,
   httpOnly: false,
   secure: process.env.NEXT_PUBLIC_MODE_ENV !== 'development',
   sameSite: 'lax' as 'lax',
 };
+
+const REFRESH_TOKEN_STORAGE_KEY = 'refreshToken';
 
 const REFRESH_TOKEN_COOKIE_CONFIG = {
   maxAge: 60 * 60 * 24 * 7,
@@ -50,37 +49,14 @@ const REFRESH_TOKEN_COOKIE_CONFIG = {
   sameSite: 'lax' as 'lax',
 };
 
-const REACT_QUERY_CONFIG: QueryClientConfig = {
-  defaultOptions: {
-    queries: {
-      refetchOnWindowFocus: false,
-      staleTime: 1000 * 60,
-      retry: 0,
-      throwOnError(error) {
-        const descMsg =
-          error instanceof AxiosError
-            ? error?.response?.data?.message
-            : 'Some thing went wrong!';
-        // const errMsg =
-        //   error instanceof AxiosError
-        //     ? error?.response?.statusText
-        //     : 'Some thing went wrong!';
-
-        Swal.fire(getSweetErrorConfig(descMsg));
-
-        return false;
-      },
-    },
-  },
-};
-
 export {
   API_ROUTES,
   WEB_ROUTES,
   NO_IMAGE,
+  ACCESS_TOKEN_STORAGE_KEY,
+  REFRESH_TOKEN_STORAGE_KEY,
   ACCESS_TOKEN_COOKIE_CONFIG,
   REFRESH_TOKEN_COOKIE_CONFIG,
   QUERY_KEYS,
   SEO,
-  REACT_QUERY_CONFIG,
 };

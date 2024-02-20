@@ -1,87 +1,64 @@
-import axios from 'axios';
+import {
+  ACCESS_TOKEN_STORAGE_KEY,
+  AUTH_METHODS,
+  REQ_METHODS,
+} from '@/utils/constants';
+import axios, { AxiosRequestConfig, AxiosResponse, Method } from 'axios';
 import { env } from 'env.mjs';
-import { stringify } from 'qs';
 
-import { IXhr } from './types';
+const axiosInstance = axios.create({
+  timeout: 6000,
+  baseURL: env.NEXT_PUBLIC_API_ENDPOINT,
+});
 
-class HttpClient {
-  constructor() {
-    axios.defaults.headers.post['Content-Type'] = 'application/json';
-    axios.defaults.baseURL = env.NEXT_PUBLIC_API_ENDPOINT;
-  }
+export /**
+ * @template T
+ * @param {string} url
+ * @param {Lowercase<Method>} [method]
+ * @param {*} [data]
+ * @param {AxiosRequestConfig} [config]
+ * @return {*}  {Promise<AxiosResponse<T>>}
+ */
+const request = <T>(
+  url: string,
+  method?: Lowercase<Method>,
+  data?: any,
+  config?: AxiosRequestConfig,
+): Promise<AxiosResponse<T>> => {
+  const defaultHeaders: AxiosRequestConfig['headers'] = {
+    'Content-Type': 'application/json',
+  };
 
-  static async sendGet({ params, url, signal, headers }: IXhr) {
-    const stringParams = stringify(params, { arrayFormat: 'repeat' });
-
-    try {
-      const response = await axios({
-        url: `${url}?${stringParams}`,
-        method: 'GET',
-        signal,
-        headers: {
-          ...headers,
-        },
-      });
-      return response.data;
-    } catch (err: unknown) {
-      throw err;
+  if (env.NEXT_PUBLIC_AUTH_METHOD == AUTH_METHODS.HEADER) {
+    const accessToken = localStorage.getItem(ACCESS_TOKEN_STORAGE_KEY);
+    if (accessToken) {
+      defaultHeaders.Authorization = `Bearer ${accessToken}`;
     }
   }
 
-  static async sendPost({ url, params, signal, headers }: IXhr) {
-    try {
-      const response = await axios({
-        url,
-        method: 'POST',
-        data: params,
-        signal,
-        headers: {
-          ...headers,
-        },
+  const commonConfig: AxiosRequestConfig = {
+    ...config,
+    headers: Object.assign(defaultHeaders, config?.headers),
+  };
+
+  switch (method) {
+    case REQ_METHODS.POST:
+      return axiosInstance.post(url, data, commonConfig);
+    case REQ_METHODS.PATCH:
+      return axiosInstance.patch(url, data, commonConfig);
+    case REQ_METHODS.PUT:
+      return axiosInstance.put(url, data, commonConfig);
+    case REQ_METHODS.DELETE:
+      return axiosInstance.delete(url, {
+        params: data,
+        ...commonConfig,
       });
-      return response.data;
-    } catch (err: unknown) {
-      throw err;
-    }
+    default:
+      return axiosInstance.get(url, {
+        params: data,
+        ...commonConfig,
+      });
   }
+};
 
-  static async sendPut() {
-    async ({ url, params, signal, headers }: IXhr) => {
-      try {
-        const response = await axios({
-          url,
-          method: 'PUT',
-          data: params,
-          signal,
-          headers: {
-            ...headers,
-          },
-        });
-        return response.data;
-      } catch (err: unknown) {
-        throw err;
-      }
-    };
-  }
-
-  static async sendDelete() {
-    async ({ url, params, signal, headers }: IXhr) => {
-      try {
-        const response = await axios({
-          url,
-          method: 'DELETE',
-          data: params,
-          signal,
-          headers: {
-            ...headers,
-          },
-        });
-        return response.data;
-      } catch (err: unknown) {
-        throw err;
-      }
-    };
-  }
-}
-
-export default HttpClient;
+export default axiosInstance;

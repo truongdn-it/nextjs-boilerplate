@@ -9,7 +9,7 @@ import { NextPage } from 'next';
 import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import { Open_Sans } from 'next/font/google';
 import Head from 'next/head';
-import { REACT_QUERY_CONFIG } from '@/utils/constants';
+import { getSweetErrorConfig } from '@/utils/helpers';
 import {
   legacyLogicalPropertiesTransformer,
   StyleProvider,
@@ -25,7 +25,9 @@ import {
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { App as AppAntd, ConfigProvider } from 'antd';
 import type { ThemeConfig } from 'antd';
+import { AxiosError } from 'axios';
 import chalk from 'chalk';
+import Swal from 'sweetalert2';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   // eslint-disable-next-line no-unused-vars
@@ -44,7 +46,30 @@ const openSans = Open_Sans({
 
 function App({ Component, pageProps }: AppPropsWithLayout) {
   const [queryClient] = React.useState(
-    () => new QueryClient(REACT_QUERY_CONFIG),
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            refetchOnWindowFocus: false,
+            staleTime: 1000 * 60,
+            retry: 0,
+            throwOnError(error) {
+              const descMsg =
+                error instanceof AxiosError
+                  ? error?.response?.data?.message
+                  : 'Some thing went wrong!';
+              // const errMsg =
+              //   error instanceof AxiosError
+              //     ? error?.response?.statusText
+              //     : 'Some thing went wrong!';
+
+              Swal.fire(getSweetErrorConfig(descMsg));
+
+              return false;
+            },
+          },
+        },
+      }),
   );
   const getLayout = Component.getLayout ?? ((page) => page);
 
