@@ -1,16 +1,32 @@
 import { useMemo } from 'react';
+import { getSweetErrorConfig } from '@/utils/helpers';
 import {
   ApolloClient,
+  from,
   HttpLink,
   InMemoryCache,
   NormalizedCacheObject,
 } from '@apollo/client';
+import { onError } from '@apollo/client/link/error';
 import { SchemaLink } from '@apollo/client/link/schema';
 import merge from 'deepmerge';
+import isEqual from 'lodash/isEqual';
+import Swal from 'sweetalert2';
 
 import { schema } from './schema';
 
 let apolloClient: ApolloClient<NormalizedCacheObject>;
+
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+  if (graphQLErrors && graphQLErrors.length > 0) {
+    graphQLErrors.forEach(({ message }) => {
+      Swal.fire(getSweetErrorConfig(message));
+    });
+  }
+  if ((!graphQLErrors || graphQLErrors.length === 0) && networkError) {
+    Swal.fire(getSweetErrorConfig(networkError.message));
+  }
+});
 
 function createIsomorphLink() {
   if (typeof window === 'undefined') {
@@ -26,7 +42,7 @@ function createIsomorphLink() {
 function createApolloClient() {
   return new ApolloClient({
     ssrMode: typeof window === 'undefined',
-    link: createIsomorphLink(),
+    link: from([errorLink, createIsomorphLink()]),
     cache: new InMemoryCache(),
   });
 }
@@ -41,7 +57,15 @@ function initializeApollo(initialState = null) {
     const existingCache = _apolloClient.extract();
 
     // Merge the existing cache into data passed from getStaticProps/getServerSideProps
-    const data = merge(initialState, existingCache);
+    const data = merge(existingCache, initialState, {
+      // combine arrays using object equality (like in sets)
+      arrayMerge: (destinationArray, sourceArray) => [
+        ...sourceArray,
+        ...destinationArray.filter((d) =>
+          sourceArray.every((s) => !isEqual(d, s)),
+        ),
+      ],
+    });
 
     // Restore the cache with the merged data
     _apolloClient.cache.restore(data);

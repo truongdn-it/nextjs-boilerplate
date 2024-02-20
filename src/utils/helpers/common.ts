@@ -1,3 +1,5 @@
+import { SweetAlertOptions } from 'sweetalert2';
+
 function isEmpty(obj: Array<any> | object): boolean {
   if (!obj || typeof obj !== 'object') return !obj;
 
@@ -23,4 +25,20 @@ function removeUndefinedAndNull(obj: Object) {
   return result;
 }
 
-export { removeUndefinedAndNull, isEmpty };
+const getSweetErrorConfig = (message: string): SweetAlertOptions => {
+  return {
+    icon: 'error',
+    title: message,
+    width: 600,
+    padding: '3em',
+    color: '#716add',
+    backdrop: `
+            rgba(0,0,123,0.4)
+            url("/images/common/nyan-cat.gif")
+            left top
+            no-repeat
+        `,
+  };
+};
+
+export { removeUndefinedAndNull, isEmpty, getSweetErrorConfig };

@@ -2,10 +2,9 @@
 import React from 'react';
 import Link from 'next/link';
 import Layout from '@/components/common/layout/base-layout';
-import { SEO } from '@/utils/constants/seo.constant';
+import { SEO, WEB_ROUTES } from '@/utils/constants/common';
 import { Button, Result, Row } from 'antd';
 import { DefaultSeo } from 'next-seo';
-import { WEB_ROUTES } from '@utils/constants/common.constant';
 
 function Error403() {
   return (

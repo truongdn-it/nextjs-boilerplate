@@ -4,19 +4,19 @@ import type { ColumnsType } from 'antd/es/table';
 
 import styles from './styles.module.scss';
 
-const columns = (t: any): ColumnsType<DataType> => [
+const columns = (): ColumnsType<DataType> => [
   {
-    title: t(`module_1.label.task`),
+    title: 'Task',
     dataIndex: 'id',
     key: 'id',
   },
   {
-    title: t(`module_1.label.title`),
+    title: 'Title',
     dataIndex: 'title',
     key: 'title',
   },
   {
-    title: t(`module_1.label.status`),
+    title: 'Status',
     dataIndex: 'status',
     key: 'status',
     render(value) {
@@ -55,7 +55,7 @@ const columns = (t: any): ColumnsType<DataType> => [
     },
   },
   {
-    title: t(`module_1.label.priority`),
+    title: 'Priority',
     key: 'priority',
     dataIndex: 'priority',
     render(value) {
@@ -82,7 +82,7 @@ const columns = (t: any): ColumnsType<DataType> => [
     },
   },
   {
-    title: t(`module_1.label.action`),
+    title: 'Action',
     key: 'action',
     render: () => <EditOutlined />,
   },
