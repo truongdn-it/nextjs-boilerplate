@@ -6,3 +6,11 @@ interface DataType {
   status: string;
   title: string;
 }
+
+interface ITask {
+  id: string;
+  title: string;
+  status: string;
+  label: string;
+  priority: string;
+}
