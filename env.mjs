@@ -11,6 +11,7 @@ export const env = createEnv({
     NEXT_PUBLIC_AUTH_METHOD: z.union([
       z.literal('header'),
       z.literal('cookie'),
+      z.string().nullish(),
     ]),
   },
   // If you're using Next.js < 13.4.4, you'll need to specify the runtimeEnv manually
