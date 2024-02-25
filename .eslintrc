@@ -6,11 +6,11 @@
     "plugin:@tanstack/eslint-plugin-query/recommended",
     "eslint:recommended",
     "google",
-    "plugin:storybook/recommended"
+    "plugin:storybook/recommended",
   ],
   "plugins": ["import", "@tanstack/query"],
   "rules": {
-    "no-console": "error",
+    "no-console": ["error", { "allow": ["warn", "error", "info"] }],
     "no-unused-vars": "error",
     "@next/next/no-document-import-in-page": "off",
     "import/no-unused-modules": [1, { "unusedExports": true }],
@@ -23,6 +23,6 @@
     "camelcase": "off",
     "new-cap": "off",
     "operator-linebreak": "off",
-    "quotes": "off"
-  }
+    "quotes": "off",
+  },
 }

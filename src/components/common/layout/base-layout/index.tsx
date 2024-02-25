@@ -1,40 +1,50 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import { Layout as AntdLayout } from 'antd';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import Footer from '@components/common/footer/copyright-footer';
 
 const { Content } = AntdLayout;
 
+const variants = {
+  in: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: {
+      duration: 0.75,
+      delay: 0.5,
+    },
+  },
+  out: {
+    opacity: 0,
+    scale: 1,
+    y: 40,
+    transition: {
+      duration: 0.75,
+    },
+  },
+};
+
 function Layout({ children }: { children: React.ReactNode }) {
+  const { asPath } = useRouter();
+
   return (
     <AntdLayout>
       <Content>
-        <motion.div
-          initial="pageInitial"
-          animate="pageAnimate"
-          exit="pageExit"
-          variants={{
-            pageInitial: {
-              opacity: 0,
-              y: 50,
-            },
-            pageAnimate: {
-              opacity: 1,
-              y: 0,
-            },
-            pageExit: {
-              opacity: 0,
-              y: -50,
-            },
-          }}
-          transition={{
-            type: 'tween',
-            ease: 'easeInOut',
-            duration: 0.5,
-          }}
-        >
-          {children}
-        </motion.div>
+        <div style={{ overflow: 'hidden' }}>
+          <AnimatePresence initial={false} mode="wait">
+            <motion.div
+              key={asPath}
+              variants={variants}
+              animate="in"
+              initial="out"
+              exit="out"
+            >
+              {children}
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </Content>
       <Footer />
     </AntdLayout>
