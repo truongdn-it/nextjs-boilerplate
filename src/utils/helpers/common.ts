@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 import { SweetAlertOptions } from 'sweetalert2';
 
 function isEmpty(obj: Array<any> | object): boolean {
@@ -41,4 +42,22 @@ const getSweetErrorConfig = (message: string): SweetAlertOptions => {
   };
 };
 
-export { removeUndefinedAndNull, isEmpty, getSweetErrorConfig };
+const logger = ({
+  message,
+  type,
+}: {
+  message: string;
+  type: 'ERROR' | 'INFO';
+}) => {
+  switch (type) {
+    case 'ERROR':
+      console.error(chalk.red(message));
+      break;
+
+    default:
+      console.info(chalk.blue(message));
+      break;
+  }
+};
+
+export { removeUndefinedAndNull, isEmpty, getSweetErrorConfig, logger };

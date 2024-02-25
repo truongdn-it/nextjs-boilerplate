@@ -23,6 +23,7 @@ function TaskTable() {
         columns={columns()}
         dataSource={data?.getTodos as any}
         rowKey={'id'}
+        scroll={{ x: 768 }}
       />
     </Skeleton>
   );

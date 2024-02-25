@@ -70,6 +70,8 @@ const nextConfig = runWithBundleAnalyzer({
   poweredByHeader: false,
 
   images: {
+    minimumCacheTTL: process.env.NODE_ENV === 'production' ? 86400 : 0,
+    formats: ['image/webp'],
     domains: [],
   },
 });

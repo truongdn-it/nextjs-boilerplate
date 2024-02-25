@@ -4,12 +4,13 @@
 import 'antd/dist/reset.css';
 import '@styles/globals.scss';
 
-import React, { ReactElement, ReactNode } from 'react';
+import React, { ReactElement, ReactNode, useEffect } from 'react';
 import { NextPage } from 'next';
 import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import { Open_Sans } from 'next/font/google';
 import Head from 'next/head';
-import { getSweetErrorConfig } from '@/utils/helpers';
+import { useRouter } from 'next/router';
+import { getSweetErrorConfig, logger } from '@/utils/helpers';
 import {
   legacyLogicalPropertiesTransformer,
   StyleProvider,
@@ -26,7 +27,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { App as AppAntd, ConfigProvider } from 'antd';
 import type { ThemeConfig } from 'antd';
 import { AxiosError } from 'axios';
-import chalk from 'chalk';
+import NProgress from 'nprogress';
 import Swal from 'sweetalert2';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
@@ -71,6 +72,7 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
         },
       }),
   );
+  const router = useRouter();
   const getLayout = Component.getLayout ?? ((page) => page);
 
   const THEME_CONFIG: ThemeConfig = {
@@ -87,6 +89,12 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
     loadDevMessages();
     loadErrorMessages();
   }
+
+  useEffect(() => {
+    router.events.on('routeChangeStart', () => NProgress.start());
+    router.events.on('routeChangeComplete', () => NProgress.done());
+    router.events.on('routeChangeError', () => NProgress.done());
+  }, [router.events]);
 
   return (
     <>
@@ -121,18 +129,19 @@ export default App;
 export function reportWebVitals(metric: NextWebVitalsMetric) {
   switch (metric.name) {
     case 'TTFB':
-      console.info(
-        chalk.green(`Thời gian phản hồi: ${(metric.value / 1000).toFixed(2)}s`),
-      );
+      logger({
+        message: `Thời gian phản hồi: ${(metric.value / 1000).toFixed(2)}s`,
+        type: 'INFO',
+      });
+
       break;
     case 'FCP':
-      console.info(
-        chalk.green(
-          `Thời gian hiển thị nội dung đầu tiên: ${(
-            metric.value / 1000
-          ).toFixed(2)}s`,
-        ),
-      );
+      logger({
+        message: `Thời gian hiển thị nội dung đầu tiên: ${(
+          metric.value / 1000
+        ).toFixed(2)}s`,
+        type: 'INFO',
+      });
       break;
   }
 }

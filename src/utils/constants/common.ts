@@ -1,3 +1,4 @@
+import { env } from 'env.mjs';
 import { DefaultSeoProps } from 'next-seo';
 
 const API_ROUTES = {
@@ -16,11 +17,23 @@ const SEO: DefaultSeoProps = {
   title: 'Nextjs Core Project',
   description: 'Nextjs Core Project by TruongDN',
   titleTemplate: '%s | Nextjs Core Project',
+  defaultOpenGraphImageHeight: 1200,
+  defaultOpenGraphImageWidth: 630,
   openGraph: {
     type: 'website',
     locale: 'en',
-    url: 'https://nextjs-core-project.vercel.app',
+    url: env.NEXT_PUBLIC_BASE_URL,
     siteName: 'Nextjs Core Project',
+    title: 'Nextjs Core Project',
+    description: 'Nextjs Core Project by TruongDN',
+    images: [
+      // {
+      //   url: '',
+      //   width: 828,
+      //   height: 315,
+      //   alt: '',
+      // },
+    ],
   },
   twitter: {
     handle: '@handle',

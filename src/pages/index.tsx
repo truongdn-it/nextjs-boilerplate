@@ -5,6 +5,7 @@ import Layout from '@/components/common/layout/base-layout';
 import { initializeApollo } from '@/services/apollo/client';
 import { SEO } from '@/utils/constants';
 import { Col, Row, Select, Typography, Watermark } from 'antd';
+import { env } from 'env.mjs';
 import { DefaultSeo } from 'next-seo';
 import TaskTable from '@components/features/todos/tasks-table';
 
@@ -13,7 +14,7 @@ const { Title } = Typography;
 const Home = () => {
   return (
     <>
-      <DefaultSeo {...SEO} title="Home" />
+      <DefaultSeo {...SEO} title="Home" canonical={env.NEXT_PUBLIC_BASE_URL} />
       <Watermark content="duongnamtruong.com">
         <div className="p-1">
           <Row justify="space-between" align="middle">
@@ -45,7 +46,7 @@ const Home = () => {
 
 export default Home;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const apolloClient = initializeApollo();
   await apolloClient.query({
     query: TodoQuery,
