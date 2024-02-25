@@ -6,8 +6,7 @@ import Document, {
   Main,
   NextScript,
 } from 'next/document';
-import { createCache, StyleProvider } from '@ant-design/cssinjs';
-import { doExtraStyle } from '@scripts/genAntdCss';
+import { createCache, extractStyle, StyleProvider } from '@ant-design/cssinjs';
 
 function MyDocument() {
   return (
@@ -25,7 +24,6 @@ export default MyDocument;
 
 MyDocument.getInitialProps = async (ctx: DocumentContext) => {
   const cache = createCache();
-  let fileName = '';
   const originalRenderPage = ctx.renderPage;
   ctx.renderPage = () =>
     originalRenderPage({
@@ -37,17 +35,13 @@ MyDocument.getInitialProps = async (ctx: DocumentContext) => {
     });
 
   const initialProps = await Document.getInitialProps(ctx);
-  // 1.1 extract style which had been used
-  fileName = doExtraStyle({
-    cache,
-  });
+  const style = extractStyle(cache, true);
   return {
     ...initialProps,
     styles: (
       <>
         {initialProps.styles}
-        {/* 1.2 inject css */}
-        {fileName && <link rel="stylesheet" href={`/${fileName}`} />}
+        <style dangerouslySetInnerHTML={{ __html: style }} />
       </>
     ),
   };
