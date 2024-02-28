@@ -143,7 +143,6 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
         fullscreen
         indicator={<HashLoader color="#00adb5" />}
       />
-      ;
     </>
   );
 }
