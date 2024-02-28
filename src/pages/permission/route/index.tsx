@@ -9,7 +9,11 @@ import { DefaultSeo } from 'next-seo';
 const Home = () => {
   return (
     <>
-      <DefaultSeo {...SEO} title="Home" canonical={env.NEXT_PUBLIC_BASE_URL} />
+      <DefaultSeo
+        {...SEO}
+        title="Permission Route"
+        canonical={env.NEXT_PUBLIC_BASE_URL + WEB_ROUTES.PERMISSION_ROUTE}
+      />
       <Watermark content="duongnamtruong.com">
         <Row justify="center" align="middle">
           <Result

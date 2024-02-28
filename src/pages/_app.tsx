@@ -36,7 +36,7 @@ import Swal from 'sweetalert2';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   // eslint-disable-next-line no-unused-vars
-  getLayout?: (page: ReactElement, ctx?: any) => ReactNode;
+  getLayout?: (page: ReactElement) => ReactNode;
 };
 
 type AppPropsWithLayout = AppProps & {
