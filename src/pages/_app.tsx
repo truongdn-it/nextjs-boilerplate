@@ -3,6 +3,7 @@
 
 import 'antd/dist/reset.css';
 import '@styles/globals.scss';
+import '@components/common/layout/admin-layout/styles.scss';
 
 import React, { ReactElement, ReactNode, useEffect } from 'react';
 import { NextPage } from 'next';
@@ -10,6 +11,9 @@ import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import { Open_Sans } from 'next/font/google';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { UserStoreProvider } from '@/stores';
+import { AdminStoreProvider } from '@/stores/admin';
+import { GlobalStoreProvider } from '@/stores/global';
 import { getSweetErrorConfig, logger } from '@/utils/helpers';
 import {
   legacyLogicalPropertiesTransformer,
@@ -32,7 +36,7 @@ import Swal from 'sweetalert2';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   // eslint-disable-next-line no-unused-vars
-  getLayout?: (page: ReactElement) => ReactNode;
+  getLayout?: (page: ReactElement, ctx?: any) => ReactNode;
 };
 
 type AppPropsWithLayout = AppProps & {
@@ -109,11 +113,17 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
           <ConfigProvider autoInsertSpaceInButton={false} theme={THEME_CONFIG}>
             <StyleProvider transformers={[legacyLogicalPropertiesTransformer]}>
               <ApolloProvider client={apolloClient}>
-                {getLayout(
-                  <AppAntd notification={{ placement: 'topRight' }}>
-                    <Component {...pageProps} />
-                  </AppAntd>,
-                )}
+                <GlobalStoreProvider>
+                  <UserStoreProvider>
+                    <AdminStoreProvider>
+                      {getLayout(
+                        <AppAntd notification={{ placement: 'topRight' }}>
+                          <Component {...pageProps} />
+                        </AppAntd>,
+                      )}
+                    </AdminStoreProvider>
+                  </UserStoreProvider>
+                </GlobalStoreProvider>
               </ApolloProvider>
             </StyleProvider>
             <ReactQueryDevtools initialIsOpen={false} />

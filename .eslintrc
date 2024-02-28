@@ -24,5 +24,6 @@
     "new-cap": "off",
     "operator-linebreak": "off",
     "quotes": "off",
+    "comma-spacing": "off",
   },
 }
