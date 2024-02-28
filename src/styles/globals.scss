@@ -1,3 +1,4 @@
+/* stylelint-disable selector-id-pattern */
 @import './common';
 
 .min-h-100 {
@@ -12,13 +13,17 @@
   @include padding(1rem);
 }
 
+#__next {
+  height: 100%;
+}
+
 /* Make clicks pass-through */
 #nprogress {
   pointer-events: none;
 }
 
 #nprogress .bar {
-  background: #c3393e;
+  background: #00adb5;
   position: fixed;
   z-index: 1031;
   top: 0;
@@ -35,8 +40,8 @@
   width: 100px;
   height: 100%;
   box-shadow:
-    0 0 10px #c3393e,
-    0 0 5px #c3393e;
+    0 0 10px #00adb5,
+    0 0 5px #00adb5;
   opacity: 1;
   transform: rotate(3deg) translate(0, -4px);
 }
@@ -55,8 +60,8 @@
   height: 18px;
   box-sizing: border-box;
   border: solid 2px transparent;
-  border-top-color: #c3393e;
-  border-left-color: #c3393e;
+  border-top-color: #00adb5;
+  border-left-color: #00adb5;
   border-radius: 50%;
   animation: nprogress-spinner 400ms linear infinite;
 }

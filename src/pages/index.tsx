@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unused-modules */
 import { Suspense } from 'react';
 import { TodoQuery } from '@/adapters/todos';
-import Layout from '@/components/common/layout/base-layout';
+import AdminLayout from '@/components/common/layout/admin-layout';
 import { initializeApollo } from '@/services/apollo/client';
 import { SEO } from '@/utils/constants';
 import { Col, Row, Select, Typography, Watermark } from 'antd';
@@ -59,5 +59,5 @@ export async function getServerSideProps() {
 }
 
 Home.getLayout = function getLayout(page: React.ReactElement) {
-  return <Layout>{page}</Layout>;
+  return <AdminLayout>{page}</AdminLayout>;
 };

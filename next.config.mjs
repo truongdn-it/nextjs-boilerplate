@@ -74,6 +74,15 @@ const nextConfig = runWithBundleAnalyzer({
     formats: ['image/webp'],
     domains: [],
   },
+  redirects: async () => {
+    return [
+      {
+        source: '/',
+        destination: '/dashboard',
+        permanent: true,
+      },
+    ];
+  },
 });
 
 export default process.env.NODE_ENV === 'production'

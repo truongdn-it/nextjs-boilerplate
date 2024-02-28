@@ -1,3 +1,4 @@
+import { DashboardOutlined, LockOutlined } from '@ant-design/icons';
 import { env } from 'env.mjs';
 import { DefaultSeoProps } from 'next-seo';
 
@@ -7,11 +8,32 @@ const API_ROUTES = {
 
 const WEB_ROUTES = {
   HOME: '/',
+  DASHBOARD: '/dashboard',
+  PERMISSION_ROUTE: '/permission/route',
 };
 
 const QUERY_KEYS = {
   GET_TASKS: 'GET_TASKS',
 };
+
+const MENU = [
+  {
+    label: 'Dashboard',
+    icon: <DashboardOutlined />,
+    path: '/dashboard',
+  },
+  {
+    label: 'Permission',
+    icon: <LockOutlined />,
+    path: '/permission',
+    children: [
+      {
+        label: 'Route Permission',
+        path: '/permission/route',
+      },
+    ],
+  },
+];
 
 const SEO: DefaultSeoProps = {
   title: 'Nextjs Core Project',
@@ -72,4 +94,5 @@ export {
   REFRESH_TOKEN_COOKIE_CONFIG,
   QUERY_KEYS,
   SEO,
+  MENU,
 };
