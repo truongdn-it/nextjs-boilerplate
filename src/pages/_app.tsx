@@ -28,10 +28,11 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { App as AppAntd, ConfigProvider } from 'antd';
+import { App as AppAntd, ConfigProvider, Spin } from 'antd';
 import type { ThemeConfig } from 'antd';
 import { AxiosError } from 'axios';
 import NProgress from 'nprogress';
+import { HashLoader } from 'react-spinners';
 import Swal from 'sweetalert2';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
@@ -78,6 +79,13 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
   );
   const router = useRouter();
   const getLayout = Component.getLayout ?? ((page) => page);
+  const [hydrated, setHydrated] = React.useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setHydrated(false);
+    }, 1000);
+  }, []);
 
   const THEME_CONFIG: ThemeConfig = {
     token: {
@@ -130,6 +138,12 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
           </ConfigProvider>
         </HydrationBoundary>
       </QueryClientProvider>
+      <Spin
+        spinning={hydrated}
+        fullscreen
+        indicator={<HashLoader color="#00adb5" />}
+      />
+      ;
     </>
   );
 }
