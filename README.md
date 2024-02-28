@@ -19,57 +19,72 @@
 
 <h2>Project Screenshots:</h2>
 
-<img src="./public/common/screenshot.png" alt="project-screenshot" width="3024" />
+<img src="./public/screenshot.png" alt="project-screenshot" width="3024" />
 
 <h2>🧐 Features</h2>
 
 Here're some of the project's best features:
 
-*   Clean folder structure
-*   High scalability
-*   Feature driven architecture
-*   Multilingualism does not change routes
-*   Validate ENV before build
-*   Validate branch and commit before commit code
-*   Support Storybook
-*   Support Unit Test
-*   Bla bla bla feature...
+- Clean folder structure
+- High scalability
+- Feature driven architecture
+- Multilingualism does not change routes
+- Validate ENV before build
+- Validate branch and commit before commit code
+- Support Storybook
+- Support Unit Test
+- Bla bla bla feature...
 
 ## 📂 Folder Structure
 
 ```
 .
-├── public (contain static files)
-├── scripts (contain script/bash)
-├── src
-│   ├── __test__
-│   │   └── setup
-│   │       └── matchMedia.ts
-│   ├── app
-│   │   ├── api
-│   │   │   └── ping
-│   │   │       └── route.ts
-│   ├── components
-│   │   ├── common
-│   │   └── features
-│   │       ├── feature-1
-│   │       │   ├── feature-1.component.tsx
-│   │       │   ├── feature-1.constant.ts
-│   │       │   ├── feature-1.hook.tsx
-│   │       │   ├── feature-1.store.ts
-│   │       │   ├── feature-1.test.tsx
-│   │       │   └── index.tsx
-│   ├── pages (contain page routes)
-│   ├── services (contain third services: AWS, Google Cloud)
-│   ├── styles (contain module styles)
-│   └── utils
-│       ├── constants
-│       └── helpers
+├── public
+│   └── images
+│       ├── admin
+│       │   └── header
+│       └── common
+├── scripts
+└── src
+    ├── __generated__ (GraphQL types auto generate)
+    ├── __test__
+    │   └── setup
+    ├── adapters
+    ├── components
+    │   ├── common
+    │   │   ├── footer
+    │   │   │   └── copyright-footer
+    │   │   └── layout
+    │   │       ├── admin-layout
+    │   │       └── base-layout
+    │   └── features
+    │       └── todos
+    │           └── tasks-table
+    ├── mocks
+    ├── pages
+    │   ├── api
+    │   │   ├── get-tasks
+    │   │   └── ping
+    │   └── permission
+    │       └── route
+    ├── services
+    │   └── apollo
+    │       ├── resolvers
+    │       └── type-defs
+    ├── stores
+    │   ├── admin
+    │   ├── global
+    │   └── user
+    ├── styles
+    └── utils
+        ├── constants
+        └── helpers
 ```
 
 ## 💉 Commit Rules
 
 Must create branch follow below rules:
+
 - build
 - chore
 - ci
@@ -83,11 +98,12 @@ Must create branch follow below rules:
 - test
 
 Example:
-```feat: first commit```
+`feat: first commit`
 
 ## 🤟 Branch Rules
 
 Must create branch follow below rules:
+
 - feat/
 - feedback/
 - hotfix/
@@ -98,9 +114,9 @@ Must create branch follow below rules:
 - fix/
 
 Example:
-```git checkout -b feat/feature-a```
+`git checkout -b feat/feature-a`
 
-Note: *Underscore to be not allow!!!*
+Note: _Underscore to be not allow!!!_
 
 <h2>🛠️ Installation Steps:</h2>
 
@@ -130,25 +146,23 @@ npm run dev
 
 <h2>🍰 Contribution Guidelines:</h2>
 
-[CONTRIBUTING]([CONTRIBUTING](https://github.com/truongdn-it/nextjs-boilerplate/blob/main/CONTRIBUTING.md))
-
-
+[CONTRIBUTING](<[CONTRIBUTING](https://github.com/truongdn-it/nextjs-boilerplate/blob/main/CONTRIBUTING.md)>)
 
 <h2>💻 Built with</h2>
 
 Technologies used in the project:
 
-*   NextJS
-*   Antd Design
-*   React Query
-*   Zustand
-*   Commit lint
-*   Eslint
-*   Prettier
-*   Storybook
-*   Vitest
-*   Apollo Server
-*   Apollo Client
+- NextJS
+- Antd Design
+- React Query
+- Zustand
+- Commit lint
+- Eslint
+- Prettier
+- Storybook
+- Vitest
+- Apollo Server
+- Apollo Client
 
 <h2>🛡️ License:</h2>
 

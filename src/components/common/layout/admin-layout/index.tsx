@@ -4,6 +4,7 @@ import { useUserStore } from '@/stores';
 import { MENU } from '@/utils/constants';
 import { getFirstPathCode, getInfoDevice } from '@/utils/helpers';
 import { Layout as AntdLayout, Drawer, theme } from 'antd';
+import AnimateLayout from '@components/common/layout/animate';
 
 import HeaderComponent from './header';
 import MenuComponent from './menu';
@@ -109,7 +110,9 @@ function AdminLayout({ children }: { children: React.ReactNode }) {
         </Drawer>
         <Content className="layout-page-content">
           <TagsView />
-          <div>{children}</div>
+          <div>
+            <AnimateLayout>{children}</AnimateLayout>
+          </div>
         </Content>
       </AntdLayout>
     </AntdLayout>
