@@ -3,12 +3,11 @@
     "next/core-web-vitals",
     "next",
     "prettier",
-    "plugin:@tanstack/eslint-plugin-query/recommended",
     "eslint:recommended",
     "google",
     "plugin:storybook/recommended",
   ],
-  "plugins": ["import", "@tanstack/query"],
+  "plugins": ["import"],
   "rules": {
     "no-console": ["error", { "allow": ["warn", "error", "info"] }],
     "no-unused-vars": "error",

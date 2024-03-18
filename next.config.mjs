@@ -6,9 +6,7 @@ import withBundleAnalyzer from '@next/bundle-analyzer';
 import million from 'million/compiler';
 
 const millionConfig = {
-  auto: true,
-  // if you're using RSC:
-  // auto: { rsc: true },
+  auto: { rsc: true },
 };
 
 const runWithBundleAnalyzer = withBundleAnalyzer({
@@ -41,6 +39,9 @@ const securityHeaders = [
 const nextConfig = runWithBundleAnalyzer({
   reactStrictMode: true,
   output: 'standalone',
+  experimental: {
+    webVitalsAttribution: ['FCP', 'TTFB'],
+  },
   compiler: {
     removeConsole:
       process.env.NODE_ENV === 'production'
@@ -73,15 +74,6 @@ const nextConfig = runWithBundleAnalyzer({
     minimumCacheTTL: process.env.NODE_ENV === 'production' ? 86400 : 0,
     formats: ['image/webp'],
     domains: [],
-  },
-  redirects: async () => {
-    return [
-      {
-        source: '/',
-        destination: '/dashboard',
-        permanent: true,
-      },
-    ];
   },
 });
 

@@ -9,7 +9,8 @@
       "@styles/*": ["src/styles/*"],
       "@utils/*": ["src/utils/*"],
       "@scripts/*": ["scripts/*"],
-      "@stores/*": ["stores/*"]
+      "@stores/*": ["stores/*"],
+      "actions/*": ["src/actions/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],

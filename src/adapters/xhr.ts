@@ -1,64 +1,70 @@
 import {
   ACCESS_TOKEN_STORAGE_KEY,
-  AUTH_METHODS,
-  REQ_METHODS,
+  AUTH_METHOD,
+  THROW_EXCEPTION,
 } from '@/utils/constants';
-import axios, { AxiosRequestConfig, AxiosResponse, Method } from 'axios';
 import { env } from 'env.mjs';
+import qs from 'qs';
 
-const axiosInstance = axios.create({
-  timeout: 6000,
-  baseURL: env.NEXT_PUBLIC_API_ENDPOINT,
-});
+const defaultHeaders: HeadersInit = {
+  'Content-Type': 'application/json',
+};
 
-export /**
- * @template T
- * @param {string} url
- * @param {Lowercase<Method>} [method]
- * @param {*} [data]
- * @param {AxiosRequestConfig} [config]
- * @return {*}  {Promise<AxiosResponse<T>>}
- */
-const request = <T>(
+const BASE_URL = env.NEXT_PUBLIC_BASE_URL;
+const DEFAULT_TIMEOUT = 20000;
+
+const request = async (
+  method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE',
   url: string,
-  method?: Lowercase<Method>,
   data?: any,
-  config?: AxiosRequestConfig,
-): Promise<AxiosResponse<T>> => {
-  const defaultHeaders: AxiosRequestConfig['headers'] = {
-    'Content-Type': 'application/json',
-  };
+  options?: RequestInit,
+): Promise<Response | null | { message: string }> => {
+  const controller = new AbortController();
 
-  if (env.NEXT_PUBLIC_AUTH_METHOD == AUTH_METHODS.HEADER) {
+  if (options?.signal) {
+    options.signal.addEventListener('abort', () => controller.abort());
+  }
+
+  const timeout = setTimeout(() => controller.abort(), DEFAULT_TIMEOUT);
+
+  if (env.NEXT_PUBLIC_AUTH_METHOD === AUTH_METHOD.HEADER) {
     const accessToken = localStorage.getItem(ACCESS_TOKEN_STORAGE_KEY);
     if (accessToken) {
       defaultHeaders.Authorization = `Bearer ${accessToken}`;
     }
   }
 
-  const commonConfig: AxiosRequestConfig = {
-    ...config,
-    headers: Object.assign(defaultHeaders, config?.headers),
+  const commonOptions: RequestInit = {
+    ...options,
+    signal: controller.signal,
+    headers: Object.assign(defaultHeaders, options?.headers),
+    method,
+    next: {
+      tags: [url],
+    },
   };
 
   switch (method) {
-    case REQ_METHODS.POST:
-      return axiosInstance.post(url, data, commonConfig);
-    case REQ_METHODS.PATCH:
-      return axiosInstance.patch(url, data, commonConfig);
-    case REQ_METHODS.PUT:
-      return axiosInstance.put(url, data, commonConfig);
-    case REQ_METHODS.DELETE:
-      return axiosInstance.delete(url, {
-        params: data,
-        ...commonConfig,
-      });
-    default:
-      return axiosInstance.get(url, {
-        params: data,
-        ...commonConfig,
-      });
+    case 'DELETE':
+    case 'GET':
+      url += data ? `?${qs.stringify(data)}` : '';
+      break;
+    case 'POST':
+    case 'PATCH':
+    case 'PUT':
+      commonOptions.body = JSON.stringify(data);
+      break;
+  }
+
+  try {
+    const res = await fetch(BASE_URL + url, commonOptions);
+    const result = await res.json();
+    return result;
+  } catch {
+    return { message: THROW_EXCEPTION.UNKNOWN };
+  } finally {
+    clearTimeout(timeout);
   }
 };
 
-export default axiosInstance;
+export { request };

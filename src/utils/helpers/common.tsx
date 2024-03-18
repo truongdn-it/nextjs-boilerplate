@@ -1,5 +1,7 @@
 import chalk from 'chalk';
+import clsx, { ClassValue } from 'clsx';
 import { SweetAlertOptions } from 'sweetalert2';
+import { twMerge } from 'tailwind-merge';
 
 function isEmpty(obj: Array<any> | object): boolean {
   if (!obj || typeof obj !== 'object') return !obj;
@@ -72,10 +74,15 @@ const getInfoDevice = () => {
   } as const;
 };
 
+const cn = (...inputs: ClassValue[]) => {
+  return twMerge(clsx(inputs));
+};
+
 export {
   removeUndefinedAndNull,
   isEmpty,
   getSweetErrorConfig,
   logger,
   getInfoDevice,
+  cn,
 };
