@@ -1,3 +1,4 @@
 {
-  "upgrade": true
+  "upgrade": true,
+  "reject": ["sharp", "eslint"]
 }

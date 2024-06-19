@@ -1,6 +1,18 @@
 'use client';
 
-const GlobalError = () => {
+import { useEffect } from 'react';
+import * as Sentry from '@sentry/nextjs';
+
+const GlobalError = ({
+  error,
+  reset,
+}: {
+  error: Error & { message?: string };
+  reset: () => void;
+}) => {
+  useEffect(() => {
+    Sentry.captureException(error);
+  }, [error]);
   return (
     <html>
       <body>

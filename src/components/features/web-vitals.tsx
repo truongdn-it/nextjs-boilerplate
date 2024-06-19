@@ -1,7 +1,7 @@
 'use client';
 
 import { useReportWebVitals } from 'next/web-vitals';
-import { logger } from '@/utils/helpers';
+import { logger } from '@/utils/helpers/common';
 
 const WebVitals = () => {
   useReportWebVitals((metric) => {

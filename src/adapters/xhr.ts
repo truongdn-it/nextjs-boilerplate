@@ -10,7 +10,7 @@ const defaultHeaders: HeadersInit = {
   'Content-Type': 'application/json',
 };
 
-const BASE_URL = env.NEXT_PUBLIC_BASE_URL;
+const BASE_URL = env.NEXT_PUBLIC_API_ENDPOINT;
 const DEFAULT_TIMEOUT = 20000;
 
 const request = async (
@@ -42,6 +42,7 @@ const request = async (
     next: {
       tags: [url],
     },
+    credentials: 'include',
   };
 
   switch (method) {

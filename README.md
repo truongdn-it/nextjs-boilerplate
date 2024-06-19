@@ -34,6 +34,7 @@ Here're some of the project's best features:
 - Support Storybook
 - Support Unit Test
 - Bla bla bla feature...
+- Analyze production error messages
 
 ## 📂 Folder Structure
 
@@ -41,9 +42,6 @@ Here're some of the project's best features:
 .
 ├── public
 │   └── images
-│       ├── admin
-│       │   └── header
-│       └── common
 ├── scripts
 └── src
     ├── __generated__ (GraphQL types auto generate)
@@ -52,18 +50,10 @@ Here're some of the project's best features:
     ├── adapters
     ├── components
     │   ├── common
-    │   │   ├── footer
-    │   │   │   └── copyright-footer
-    │   │   └── layout
-    │   │       ├── admin-layout
-    │   │       └── base-layout
     │   └── features
-    │       └── todos
-    │           └── tasks-table
     ├── mocks
     ├── pages
     │   ├── api
-    │   │   ├── get-tasks
     │   │   └── ping
     │   └── permission
     │       └── route
@@ -144,6 +134,35 @@ npm install
 npm run dev
 ```
 
+## 🤖 Using Docker and Makefile
+
+### Development environment - for doing testing
+
+```
+make build-development
+make start-development
+```
+
+Open http://localhost:3001
+
+### Staging environment - for doing UAT testing
+
+```
+make build-staging
+make start-staging
+```
+
+Open http://localhost:3002
+
+### Production environment - for users
+
+```
+make build-production
+make start-production
+```
+
+Open http://your-domain:80
+
 <h2>🍰 Contribution Guidelines:</h2>
 
 [CONTRIBUTING](<[CONTRIBUTING](https://github.com/truongdn-it/nextjs-boilerplate/blob/main/CONTRIBUTING.md)>)
@@ -163,6 +182,7 @@ Technologies used in the project:
 - Vitest
 - Apollo Server
 - Apollo Client
+- Sentry
 
 <h2>🛡️ License:</h2>
 

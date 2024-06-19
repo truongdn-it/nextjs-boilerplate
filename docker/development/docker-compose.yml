@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  web-development:
+    build:
+      context: ../../
+      dockerfile: docker/development/Dockerfile
+    image: web-development
+    ports:
+      - '3001:3000'

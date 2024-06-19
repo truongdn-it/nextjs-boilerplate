@@ -7,7 +7,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: lts/*
+          node-version: 18-alpine
       - uses: actions/cache@v3
         with:
           # See here for caching with `yarn` https://github.com/actions/cache/blob/main/examples.md#node---yarn or you can leverage caching with actions/setup-node https://github.com/actions/setup-node
@@ -27,3 +27,6 @@ jobs:
           # NEXT_PUBLIC_API_ENDPOINT: ${{ secrets.NEXT_PUBLIC_API_ENDPOINT }}
           NEXT_PUBLIC_API_ENDPOINT: 'http://localhost:3000'
           NEXT_PUBLIC_BASE_URL: 'http://localhost:3000'
+          NEXT_PUBLIC_AUTH_METHOD: cookie
+          NEXT_PUBLIC_ALLOWED_COOKIE_DOMAIN: localhost
+          ALLOWED_ORIGINS: '*.localhost:3000,localhost:3000'

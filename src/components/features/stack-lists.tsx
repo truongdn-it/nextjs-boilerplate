@@ -1,10 +1,10 @@
 import React, { memo } from 'react';
 import Link from 'next/link';
-import { doGetMock } from '@/adapters';
+import { doGetMock } from '@/adapters/mock.adapter';
 import { MOCK } from '@/mocks';
 import { WEB_ROUTES } from '@/utils/constants';
 
-import { ShowSonnerToaster } from '../toast';
+import { ShowSonnerToaster } from '../common/toast';
 
 const Card = async ({
   delay,
