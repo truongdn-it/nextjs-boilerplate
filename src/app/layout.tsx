@@ -6,9 +6,11 @@ import '@styles/globals.css';
 
 import dynamic from 'next/dynamic';
 import { Inter as FontSans } from 'next/font/google';
+import Header from '@/components/common/header';
 import NextTopLoader from 'nextjs-toploader';
 
-import Providers from './providers';
+import NextuiProviders from './nextui-provider';
+import SolanaWalletProvider from './solana-wallets-provider';
 
 const SonnerToaster = dynamic(() => import('@/components/common/toast/sonner'));
 
@@ -24,13 +26,18 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     <html lang="en">
       <body
         className={cn(
-          'min-h-screen bg-background font-sans antialiased bg-gray-100',
+          'min-h-screen font-sans antialiased bg-gray-100',
           fontSans.variable,
         )}
       >
         <WebVitals />
         <NextTopLoader />
-        <Providers>{children}</Providers>
+        <NextuiProviders>
+          <SolanaWalletProvider>
+            <Header />
+            {children}
+          </SolanaWalletProvider>
+        </NextuiProviders>
         <SonnerToaster />
       </body>
     </html>

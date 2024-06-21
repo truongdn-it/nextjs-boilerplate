@@ -45,6 +45,10 @@
   "dependencies": {
     "@nextui-org/react": "2.4.2",
     "@sentry/nextjs": "8.9.2",
+    "@solana/wallet-adapter-base": "0.9.23",
+    "@solana/wallet-adapter-react": "0.15.35",
+    "@solana/wallet-adapter-wallets": "0.19.32",
+    "@solana/web3.js": "1.93.0",
     "@t3-oss/env-nextjs": "0.10.1",
     "canvas-confetti": "1.9.3",
     "clsx": "2.1.1",

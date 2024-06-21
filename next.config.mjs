@@ -41,6 +41,7 @@ const nextConfig = runWithBundleAnalyzer({
     serverActions: {
       allowedOrigins: process.env.ALLOWED_ORIGINS?.split(','),
     },
+    serverComponentsExternalPackages: ['pino-pretty'],
   },
   compiler: {
     removeConsole:
