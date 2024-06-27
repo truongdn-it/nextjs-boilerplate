@@ -1,6 +1,4 @@
 {
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "files.autoSave": "afterDelay",
